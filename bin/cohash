@@ -1,0 +1,21 @@
+#!/usr/bin/python3
+
+import subprocess as sp
+import os
+import re
+
+# Build up a list of the projects that currently sitting on branches
+repos = sp.run("repo status", shell=True, stdout=sp.PIPE)
+repolist = re.findall(r'project (.*?)branch', repos.stdout.decode("utf-8"))
+
+cwd = os.getcwd()
+for repo_unformated in repolist:
+    repo = repo_unformated.strip()
+    path = cwd + '/' + repo
+    try:
+        hash = sp.run("cd " + path + ";git rev-parse HEAD", shell=True, check=True, stdout=sp.PIPE)
+        sp.run("cd " + path + "; git checkout " + hash.stdout.decode("utf-8"), shell=True, check=True, stderr=sp.DEVNULL)
+        print ('Project ' + repo + ' now checked out hash ' + hash.stdout.decode("utf-8")[:6])
+    except sp.CalledProcessError as e:
+        print ('Failed to checkout hash for project ' + repo + '\n')
+        exit

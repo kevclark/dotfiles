@@ -1,0 +1,65 @@
+#!/bin/bash
+
+if [ -z $1 ]; then
+    mod="vanilla"
+else
+    mod="$1"
+fi
+
+case $2 in
+    -s) notoggle=1 && echo "Not toggling - setting keymap only" ;;
+     *) notoggle=0 ;;
+esac
+
+layout=`setxkbmap -query`
+country=`echo "$layout" | grep layout | cut -d':' -f2- | xargs`
+
+function colemak-angle-dh {
+    if [[ "${country:0:2}" == 'gb' ]]; then
+        keeb_model="pc105angle"
+        keeb_layout="gb(cmk_ed_ks)"
+    else
+        keeb_model="pc104angle-z"
+        keeb_layout="us(cmk_ed_us)"
+    fi
+    ##-> DreymaR's SetXKB.sh: Activate layout
+    # Curl-DH mod
+    setxkbmap -model "${keeb_model}" -layout "${keeb_layout}" -option 'misc:extend,lv5:caps_switch_lock,grp:shifts_toggle,compose:menu,misc:cmk_curl_dh'
+}
+
+function colemak-wide-angle-dh {
+    if [[ "${country:0:2}" == 'gb' ]]; then
+        keeb_model="pc105aw-sl"
+        keeb_layout="gb(cmk_ed_ks)"
+    else
+        keeb_model="pc104aw-zqu"
+        keeb_layout="us(cmk_ed_us)"
+    fi
+    ##-> DreymaR's SetXKB.sh: Activate layout
+    # Curl-DH Wide
+    setxkbmap -model "${keeb_model}" -layout "${keeb_layout}" -option 'misc:extend,lv5:caps_switch_lock,grp:shifts_toggle,compose:menu,misc:cmk_curl_dh'
+}
+
+function set-colemak {
+    if [[ "$mod" == "dh" ]]; then
+        echo "Switching to colemak-angle-dh"
+        colemak-angle-dh
+    elif [[ "$mod" == "wide-dh" ]]; then
+        echo "Switching to colemak-wide-angle-dh"
+        colemak-wide-angle-dh
+    else
+        echo "Switching to colemak"
+        setxkbmap ${country:0:2} -variant colemak
+    fi
+}
+
+# Main
+if echo "$layout" | grep -q -E 'colemak|cmk' && [ $notoggle == 0 ]; then
+    # Toggle to qwerty
+    echo "You're running colemak, switching to qwerty"
+    # Use this to reset keyboard to vanilla country code with no options
+    setxkbmap -model pc105 -layout ${country:0:2} -option
+else
+    # Toggle to colemak
+    set-colemak
+fi

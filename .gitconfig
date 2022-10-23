@@ -1,0 +1,18 @@
+[user]
+	name = Kevin Clark
+[color]
+	ui = auto
+[push]
+	default = simple
+[diff]
+	tool = bc3
+[difftool]
+	bc3 = trustExitCode
+	prompt = false
+[merge]
+	tool = bc3
+[mergetool]
+	trustExitCode = true
+	keepBackup = false
+[core]
+	editor = vim

@@ -1,0 +1,49 @@
+" Setup spaces for tabs
+set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+
+" The following are commented out as they cause vim to behave a lot
+" differently from regular Vi. They are highly recommended though.
+set showcmd		" Show (partial) command in status line.
+set showmatch		" Show matching brackets.
+set incsearch		" Incremental search
+"set autowrite		" Automatically save before commands like :next and :make
+set hlsearch            " highligh search results
+set number
+set relativenumber
+
+" Show white space
+set listchars=tab:>-,trail:~,extends:>,precedes:<
+set list
+set nosmartindent
+filetype indent on
+set cinkeys-=0#
+set indentkeys-=0#
+if has('unnamedplus')
+  set clipboard=unnamed,unnamedplus
+endif
+
+" Specify a directory for plugins
+call plug#begin('~/.vim/plugged')
+
+Plug 'scrooloose/nerdtree'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'itchyny/lightline.vim'
+Plug 'tpope/vim-surround'
+Plug 'airblade/vim-gitgutter'
+Plug 'mileszs/ack.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'altercation/vim-colors-solarized'
+
+" Initialize plugin system
+call plug#end()
+
+" Some vim-colors settings
+let g:solarized_termcolors=256
+set background=dark
+let g:solarized_contrast="high"
+let g:solarized_visibility="high"
+colorscheme solarized
+" Fix-up for lightline display on single vim window
+set laststatus=2
+set updatetime=200

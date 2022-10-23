@@ -1,0 +1,158 @@
+# Config setup documented at
+# https://starship.rs/config/#prompt
+
+# Inserts a blank line between shell prompts
+add_newline = true
+
+# Move time display to beginning of prompt
+format = "$time$all"
+
+# Replace the "❯" symbol in the prompt with "➜"
+[character]                         # The name of the module we are configuring is "character"
+success_symbol = "[➜](bold green)"  # The "success_symbol" segment is being set to "➜" with the color "bold green"
+error_symbol = "[✗](bold red)"      # The "error_symbol" segment is being set to "➜" with the color "bold red"
+
+# Disable the package module, hiding it from the prompt completely
+[package]
+disabled = true
+
+[directory]
+truncate_to_repo = false
+
+[git_branch]
+always_show_remote = true
+format = "[$symbol$branch]($style) [{$remote_name/$remote_branch}](blue) "
+
+[git_commit]
+tag_disabled = false
+
+[git_status]
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+conflicted = "=${count}"
+untracked = "?${count}"
+stashed = "$${count}"
+modified = "!${count}"
+staged = "+${count}"
+renamed = "»${count}"
+deleted = "✘${count}"
+
+[status]
+disabled = false
+
+[time]
+disabled = false
+format = "[$time]($style) "
+
+# Disable prompts not interested in
+[aws]
+disabled = true
+
+[battery]
+disabled = true
+
+[cmake]
+disabled = true
+
+[cobol]
+disabled = true
+
+[conda]
+disabled = true
+
+[crystal]
+disabled = true
+
+[dart]
+disabled = true
+
+[deno]
+disabled = true
+
+[dotnet]
+disabled = true
+
+[elixir]
+disabled = true
+
+[elm]
+disabled = true
+
+[erlang]
+disabled = true
+
+[gcloud]
+disabled = true
+
+[helm]
+disabled = true
+
+[java]
+disabled = true
+
+[julia]
+disabled = true
+
+[kotlin]
+disabled = true
+
+[kubernetes]
+disabled = true
+
+[lua]
+disabled = true
+
+[nim]
+disabled = true
+
+[nix_shell]
+disabled = true
+
+[ocaml]
+disabled = true
+
+[openstack]
+disabled = true
+
+[perl]
+disabled = true
+
+[php]
+disabled = true
+
+[purescript]
+disabled = true
+
+[rlang]
+disabled = true
+
+[red]
+disabled = true
+
+[ruby]
+disabled = true
+
+[scala]
+disabled = true
+
+[singularity]
+disabled = true
+
+[swift]
+disabled = true
+
+[terraform]
+disabled = true
+
+[vagrant]
+disabled = true
+
+[vlang]
+disabled = true
+
+[vcsh]
+disabled = true
+
+[zig]
+disabled = true

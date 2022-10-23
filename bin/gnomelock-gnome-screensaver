@@ -1,0 +1,12 @@
+#!/bin/sh
+gnome-screensaver-command -l
+sleep 1
+
+lockrunning=`gnome-screensaver-command -q`
+notrunning="inactive"
+
+if echo "$lockrunning" | grep -qv "$notrunning"; then
+    # Turn off monitor only if screensaver is running
+    xset dpms force off
+fi
+

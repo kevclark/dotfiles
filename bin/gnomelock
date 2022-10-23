@@ -1,0 +1,7 @@
+#!/bin/sh
+i3lock-fancy &
+sleep 1
+
+# Turn off monitor only
+xset dpms force off
+

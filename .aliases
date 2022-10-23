@@ -1,0 +1,32 @@
+# Common aliases
+
+alias lh='ll -h'
+alias gdiff='git difftool -d --no-symlinks'
+alias gl='git log --graph --format="%C(auto)%h%Cgreen %cd%C(auto)%d%Cblue %an%Creset %s" --date=short'
+alias gla='git log --graph --all --format="%C(auto)%h%Cgreen %cd%C(auto)%d%Cblue %an%Creset %s" --date=short'
+alias gmerge='git merge --no-ff'
+alias pcheck='repo forall -c '\''git status | egrep "Your branch is (behind|ahead)" && pwd && echo; git branch -vv --points-at HEAD | egrep "^[*]" | egrep  -v "(HEAD detached|no branch)" | egrep -vq "\[origin" && pwd && echo'\'''
+alias crtinfo='function _crtinfo(){ openssl x509 -in $1 -noout -text; };_crtinfo'
+alias cpwd='pwd | tr -d '\n' | xclip -selection c'
+alias ff='firefox'
+alias se='sudoedit'
+
+# Network specific aliases
+if [ -f $HOME/.network_aliases ]; then
+    source $HOME/.network_aliases
+fi
+
+# Function aliases
+rget() {
+    let cutdirs=$(tr -dc '/' <<< $1 | wc -c)-3
+    echo "wget --recursive -R index.html* -np -nc -nH --cut-dirs=$cutdirs --random-wait --wait 1 -e robots=off $1"
+    wget --recursive -R "index.html*" -np -nc -nH --cut-dirs=$cutdirs --random-wait --wait 1 -e robots=off $1
+}
+
+# dotfiles repo aliases
+alias dotfiles="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
+alias gladot='git --git-dir=$HOME/.dotfiles --work-tree=$HOME log --graph --all --format="%C(auto)%h%Cgreen %cd%C(auto)%d%Cblue %an%Creset %s" --date=short'
+alias dt=dotfiles
+alias dtst="dt status"
+alias dtd="dt diff"
+alias dta="dt add . -u"
