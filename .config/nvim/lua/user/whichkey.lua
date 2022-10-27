@@ -175,6 +175,7 @@ local mappings = {
     i = { "<cmd>lua vim.lsp.buf.implementation()<cr>", "Goto implementation" },
     k = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Signature help" },
     R = { "<cmd>lua vim.lsp.buf.references()<cr>", "Find references" },
+    s = { "<cmd>SymbolsOutline<cr>", "Symbols viewer"}
   },
 
   s = {
