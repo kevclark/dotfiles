@@ -5,8 +5,9 @@ A place to store your dotfiles and move them around different machines.
 # Setup
 
 ```
-git archive --remote=https://github.com/kevclark/dotfiles.git HEAD .dotfiles-scripts/makehome.py | tar -xO | python3
+curl https://raw.githubusercontent.com/kevclark/dotfiles/master/.dotfiles-scripts/makehome.py | python3
 ```
+
 ## Stuff to apt install
 ```
 sudo apt install vim vim-gtk xclip byobu zsh zsh-autosuggestions zsh-syntax-highlighting \
