@@ -78,8 +78,8 @@ return packer.startup(function(use)
   -- vimscript plugins
   use "psf/black"
   use "tpope/vim-surround"
-  use "tpope/vim-fugitive"
-  use "junegunn/gv.vim"
+  --[[ use "tpope/vim-fugitive" ]]
+  --[[ use "junegunn/gv.vim" ]]
   use "vim-utils/vim-man"
   use "mbbill/undotree"
 
@@ -117,6 +117,8 @@ return packer.startup(function(use)
 
   -- Git
   use "lewis6991/gitsigns.nvim"
+  use "sindrets/diffview.nvim"
+  use "TimUntersberger/neogit"
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

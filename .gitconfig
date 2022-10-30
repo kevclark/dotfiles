@@ -1,19 +1,29 @@
 [user]
-	name = Kevin Clark
-	email = kev@devlap.com
+  name = Kevin Clark
+  email = kev@devlap.com
 [color]
-	ui = auto
+  ui = auto
 [push]
-	default = simple
+  default = simple
 [diff]
-	tool = bc3
+  tool = bc3
+  colorMoved = default
 [difftool]
-	bc3 = trustExitCode
-	prompt = false
+  bc3 = trustExitCode
+  prompt = false
 [merge]
-	tool = bc3
+  tool = bc3
+  conflictstyle = diff3
 [mergetool]
-	trustExitCode = true
-	keepBackup = false
+  trustExitCode = true
+  keepBackup = false
 [core]
-	editor = vim
+  editor = vim
+  pager = delta
+[interactive]
+  diffFilter = delta --color-only
+
+[delta]
+  navigate = true
+  line-numbers = true
+  side-by-side = true
