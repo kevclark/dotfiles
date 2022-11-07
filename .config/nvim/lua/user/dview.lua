@@ -1,9 +1,9 @@
-local status_ok, actions = pcall(require, "diffview.actions")
-if not status_ok then
+local actions_ok, actions = pcall(require, "diffview.actions")
+if not actions_ok then
 	return
 end
-local status_ok2, diffview = pcall(require, "diffview")
-if not status_ok2 then
+local diffview_ok, diffview = pcall(require, "diffview")
+if not diffview_ok then
 	return
 end
 

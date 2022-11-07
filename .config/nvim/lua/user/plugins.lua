@@ -84,7 +84,8 @@ return packer.startup(function(use)
   use "mbbill/undotree"
 
   -- Colorschemes
-  use "gruvbox-community/gruvbox"
+  use "ellisonleao/gruvbox.nvim"
+  use "folke/tokyonight.nvim"
 
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
