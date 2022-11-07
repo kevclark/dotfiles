@@ -56,6 +56,7 @@ if vim.fn.has('unnamedplus') == 1 then
 end
 
 vim.opt.shortmess:append "c"
+vim.opt.fillchars:append "diff:/"
 
 for k, v in pairs(options) do
   vim.opt[k] = v
