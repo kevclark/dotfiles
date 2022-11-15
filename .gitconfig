@@ -12,7 +12,7 @@
   bc3 = trustExitCode
   prompt = false
 [merge]
-  tool = bc3
+  tool = vimdiff
   conflictstyle = diff3
 [mergetool]
   trustExitCode = true
@@ -22,7 +22,6 @@
   pager = delta
 [interactive]
   diffFilter = delta --color-only
-
 [delta]
   navigate = true
   line-numbers = true
