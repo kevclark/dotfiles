@@ -148,7 +148,7 @@ nvim_tree.setup {
     show_on_dirs = false,
     debounce_delay = 50,
     icons = {
-      hint = "",
+      hint = "",
       info = "",
       warning = "",
       error = "",
