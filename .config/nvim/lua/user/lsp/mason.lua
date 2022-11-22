@@ -5,8 +5,9 @@ local servers = {
 	-- "tsserver",
 	"pyright",
 	"bashls",
-	"jsonls",
+	"clangd",
 	"yamlls",
+  "vimls",
 }
 
 local settings = {

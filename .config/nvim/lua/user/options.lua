@@ -40,7 +40,6 @@ local options = {
   undodir = HOME .. "/.vim/undodir",       -- undo file per file being edited
   undofile = true,                         -- undodir must exist
   colorcolumn = "100",                     -- file width column indicator
-  autochdir = true                         -- change to the dir of the buffer currently in focus
 }
 
 local globals = {
