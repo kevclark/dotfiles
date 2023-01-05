@@ -1,0 +1,10 @@
+{
+  "catppuccin": { "branch": "main", "commit": "26e498db297607fe17a6206c5a28f0f4cb532954" },
+  "dracula.nvim": { "branch": "main", "commit": "9195c478cf05c3369131a7a9c606cbbc5247b0c6" },
+  "gruvbox.nvim": { "branch": "main", "commit": "7a5c7ace3ac169b2898a4c7d8abec42cf9e18003" },
+  "lazy.nvim": { "branch": "main", "commit": "a11a317a922d4a343e611bed6629fe5a11d2cb82" },
+  "onedark.nvim": { "branch": "master", "commit": "89dde4963ad198c9b6144dee3d5e8bcbb7559ddc" },
+  "oxocarbon.nvim": { "branch": "main", "commit": "71cd5475050ddf173a8d94dd0ea067b78d88397b" },
+  "rose-pine": { "branch": "main", "commit": "df94e56cadef971164942726fa2aa55c9f078c2b" },
+  "tokyonight.nvim": { "branch": "main", "commit": "42cccfe663f36b91792a350164f0695b44a031d9" }
+}

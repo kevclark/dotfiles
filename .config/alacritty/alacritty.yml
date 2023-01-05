@@ -327,7 +327,7 @@ selection:
 #   - (Windows) powershell
 shell:
  program: /usr/bin/zsh
- # These GDK vars var being set by the snap installed alacritty which 
+ # These GDK vars are being set by the snap installed alacritty which 
  # stop GTK programs from launching from the cmdline
  args:
    - -c
