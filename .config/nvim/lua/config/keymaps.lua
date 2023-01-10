@@ -5,12 +5,9 @@
 -- Shorten function name and set default options
 -- local keymap = vim.keymap.set
 function keymap(mode, lhs, rhs, opt)
-    opts = vim.tbl_deep_extend("force", { noremap = true, silent = true }, opts or {})
-    vim.keymap.set(mode, lhs, rhs, opt)
+  opts = vim.tbl_deep_extend("force", { noremap = true, silent = true }, opts or {})
+  vim.keymap.set(mode, lhs, rhs, opt)
 end
-
--- Space has been remapped as the leader key in options
-keymap({'n', 'v'}, "<Space>", "<Nop>", opts)
 
 -- Modes
 --   normal_mode = "n",
@@ -21,10 +18,10 @@ keymap({'n', 'v'}, "<Space>", "<Nop>", opts)
 --   command_mode = "c",
 
 -- Better window navigation
-keymap("n", "<C-Up>",   "<C-w>k", { desc = "Go to upper window" })
+keymap("n", "<C-Up>", "<C-w>k", { desc = "Go to upper window" })
 keymap("n", "<C-Down>", "<C-w>j", { desc = "Go to lower window" })
 keymap("n", "<C-Left>", "<C-w>h", { desc = "Go to left window" })
-keymap("n", "<C-Right>","<C-w>l", { desc = "Go to right window" })
+keymap("n", "<C-Right>", "<C-w>l", { desc = "Go to right window" })
 
 -- Resize with arrows
 keymap("n", "<S-Up>", ":resize +2<CR>", { desc = "Increase window height" })
@@ -57,7 +54,7 @@ keymap("i", "<A-k>", "<Esc>:m .-2<CR>==gi", { desc = "Move up" })
 keymap({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
 
 -- Better register control (more in whichkey.lua)
-keymap("v", "p", '"_dP', { desc = "Send to the black hole before pasting"})
+keymap("v", "p", '"_dP', { desc = "Send to the black hole before pasting" })
 keymap("v", ",d", '"_d', { desc = "Send to the black hole instead moving to register" })
 
 -- Should system clipboard only copied to via the leader?
@@ -77,8 +74,7 @@ keymap("n", "<leader>ws", "<C-W>s", { desc = "split-window-below" })
 keymap("n", "<leader>wv", "<C-W>v", { desc = "split-window-right" })
 
 -- Delete buffer without removing window / split
-keymap("n", "<leader>d", ":bp<bar>sp<bar>bn<bar>bd<CR>", 
-                            {desc = "Delete Buffer, keep window/split"} )
+keymap("n", "<leader>d", ":bp<bar>sp<bar>bn<bar>bd<CR>", { desc = "Delete Buffer, keep window/split" })
 
 -- save in insert mode
 -- (may want to go gack to the old <leader>w method - try it for a while)

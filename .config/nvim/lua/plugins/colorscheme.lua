@@ -17,20 +17,30 @@ return {
     --   vim.cmd([[colorscheme rose-pine]])
     -- end,
   },
-  
-  { "shaunsingh/oxocarbon.nvim" },
 
-  { "ellisonleao/gruvbox.nvim" },
+  {
+    "shaunsingh/oxocarbon.nvim",
+    lazy = false,
+    priority = 1000,
+  },
 
-  { 
+  {
+    "ellisonleao/gruvbox.nvim",
+    lazy = false,
+    priority = 1000,
+  },
+
+  {
     "Mofiqul/dracula.nvim",
     lazy = false,
     priority = 1000,
-    config = function()
-      -- local dracula = require("dracula")
-      -- dracula.setup({ transparent_bg = true, })
-      local dracula = require("dracula")
-      dracula.load()
-    end,
+    -- config = function()
+    -- local dracula = require("dracula")
+    -- dracula.setup({ transparent_bg = true, })
+
+    -- the colorscheme will be set from lazyvim_override.lua
+    -- local dracula = require("dracula")
+    -- dracula.load()
+    -- end,
   },
 }
