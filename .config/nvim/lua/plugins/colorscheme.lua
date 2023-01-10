@@ -34,13 +34,18 @@ return {
     "Mofiqul/dracula.nvim",
     lazy = false,
     priority = 1000,
-    -- config = function()
-    -- local dracula = require("dracula")
-    -- dracula.setup({ transparent_bg = true, })
+    config = function()
+      local dracula = require("dracula")
+      dracula.setup({
+        overrides = {
+          -- NormalFloat = { fg = "#282A36", bg = "#44475A" },
+          NormalFloat = { bg = "#44475A" },
+        },
+      })
 
-    -- the colorscheme will be set from lazyvim_override.lua
-    -- local dracula = require("dracula")
-    -- dracula.load()
-    -- end,
+      -- the colorscheme will be set from lazyvim_override.lua
+      -- local dracula = require("dracula")
+      -- dracula.load()
+    end,
   },
 }
