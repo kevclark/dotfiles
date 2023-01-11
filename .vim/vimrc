@@ -22,28 +22,12 @@ if has('unnamedplus')
   set clipboard=unnamed,unnamedplus
 endif
 
-" Specify a directory for plugins
-call plug#begin('~/.vim/plugged')
-
-Plug 'scrooloose/nerdtree'
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
-Plug 'itchyny/lightline.vim'
-Plug 'tpope/vim-surround'
-Plug 'airblade/vim-gitgutter'
-Plug 'mileszs/ack.vim'
-Plug 'tpope/vim-fugitive'
-Plug 'altercation/vim-colors-solarized'
-
-" Initialize plugin system
-call plug#end()
-
 " Some vim-colors settings
-let g:solarized_termcolors=256
+" let g:solarized_termcolors=256
 set background=dark
-let g:solarized_contrast="high"
-let g:solarized_visibility="high"
-colorscheme solarized
+" let g:solarized_contrast="high"
+" let g:solarized_visibility="high"
+" colorscheme solarized
 " Fix-up for lightline display on single vim window
 set laststatus=2
 set updatetime=200

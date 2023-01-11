@@ -10,6 +10,7 @@ alias crtinfo='function _crtinfo(){ openssl x509 -in $1 -noout -text; };_crtinfo
 alias cpwd='pwd | tr -d '\n' | xclip -selection c'
 alias ff='firefox'
 alias se='sudoedit'
+alias fd='fdfind'
 alias lg=lazygit
 
 # Network specific aliases
