@@ -105,28 +105,71 @@ return {
   {
     "nvim-lualine/lualine.nvim",
     opts = function()
-        local icons = require("lazyvim.config").icons
+      local icons = require("lazyvim.config").icons
 
-        return {
-            sections = {
-                lualine_b = { "branch",
-                    {
-                        "diagnostics",
-                        symbols = {
-                            error = icons.diagnostics.Error,
-                            warn = icons.diagnostics.Warn,
-                            info = icons.diagnostics.Info,
-                            hint = icons.diagnostics.Hint,
-                        },
-                    },
-                },
-                lualine_c = { "filename" },
-                -- lualine_x = { "encoding", "fileformat", "filetype" },
-                lualine_x = { "diff", "spaces", "encoding", "filetype" },
-                lualine_y = { "progress" },
-                lualine_z = { "location" },
+      local function fg(name)
+        return function()
+          ---@type {foreground?:number}?
+          local hl = vim.api.nvim_get_hl_by_name(name, true)
+          return hl and hl.foreground and { fg = string.format("#%06x", hl.foreground) }
+        end
+      end
+
+      return {
+        options = {
+          theme = "gruvbox",
+        },
+        sections = {
+          lualine_b = {
+            { "branch", separator = "|", padding = { left = 1, right = 0 } },
+            {
+              "diagnostics",
+              symbols = {
+                error = icons.diagnostics.Error,
+                warn = icons.diagnostics.Warn,
+                info = icons.diagnostics.Info,
+                hint = icons.diagnostics.Hint,
+              },
             },
-        }
+          },
+          lualine_c = {
+            { "filename", path = 1, symbols = { modified = "[+]", readonly = "[-]", unnamed = "" } },
+                    -- stylua: ignore
+                    {
+                        function() return require("nvim-navic").get_location() end,
+                        cond = function() return require("nvim-navic").is_available() end,
+                    },
+          },
+          lualine_x = {
+                    -- stylua: ignore
+                    {
+                        function() return require("noice").api.status.command.get() end,
+                        cond = function() return require("noice").api.status.command.has() end,
+                        color = fg("Statement")
+                    },
+                    -- stylua: ignore
+                    {
+                        function() return require("noice").api.status.mode.get() end,
+                        cond = function() return require("noice").api.status.mode.has() end,
+                        color = fg("Constant") ,
+                    },
+            { require("lazy.status").updates, cond = require("lazy.status").has_updates, color = fg("Special") },
+            {
+              "diff",
+              symbols = {
+                added = icons.git.added,
+                modified = icons.git.modified,
+                removed = icons.git.removed,
+              },
+            },
+          },
+          lualine_y = { "filetype" },
+          lualine_z = {
+            { "progress", separator = "|", padding = { left = 1, right = 0 } },
+            { "location", separator = "", padding = { left = 0, right = 1 } },
+          },
+        },
+      }
     end,
   },
   -- disable alpha (the dashboad)
