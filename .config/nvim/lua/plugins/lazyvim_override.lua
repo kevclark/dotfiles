@@ -45,14 +45,6 @@ return {
         function() require("telescope.builtin").find_files({ cwd = require("lazy.core.config").options.root }) end,
         desc = "Find Plugin File",
       },
-      -- add a keymap to preview available colorschemes in ui
-      {
-        "<leader>ut",
-        function()
-          require("telescope.builtin").colorscheme({ enable_preview = true })
-        end,
-        desc = "Themes - Colorschemes",
-      },
       -- add a keymap to list buffers
       {
         "<leader>bl",
@@ -79,6 +71,9 @@ return {
     ---@class PluginLspOpts
     opts = {
       ---@type lspconfig.options
+      diagnostics = {
+        virtual_text = false, -- disable inline diagnostics
+      },
       servers = {
         -- lsp servers will be automatically installed with mason and loaded with lspconfig
         pyright = {},
@@ -89,19 +84,6 @@ return {
     },
   },
 
-  -- {
-  --   "folke/noice.nvim",
-  --   enabled = true,
-  --   opts = {
-  --     cmdline = {
-  --       view = "cmdline_popup",
-  --       -- view = "cmdline",
-  --     },
-  --     messages = {
-  --       enabled = true,
-  --     },
-  --   },
-  -- },
   {
     "nvim-lualine/lualine.nvim",
     opts = function()
@@ -165,13 +147,24 @@ return {
           },
           lualine_y = { "filetype" },
           lualine_z = {
-            { "progress", separator = "|", padding = { left = 1, right = 0 } },
-            { "location", separator = "", padding = { left = 0, right = 1 } },
+            { "location", separator = "|", padding = { left = 1, right = 0 } },
+            { "progress", separator = "", padding = { left = 0, right = 1 } },
           },
         },
       }
     end,
   },
+
+  -- bufferline
+  {
+    "akinsho/nvim-bufferline.lua",
+    opts = {
+      options = {
+        always_show_bufferline = true,
+      },
+    },
+  },
+
   -- disable alpha (the dashboad)
   { "goolord/alpha-nvim", enabled = false },
 }
