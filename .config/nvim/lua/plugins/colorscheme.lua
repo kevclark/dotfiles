@@ -1,5 +1,12 @@
 return {
 
+  -- tokyonight
+  {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+  },
+
   -- onedark
   {
     "navarasu/onedark.nvim",
@@ -38,8 +45,8 @@ return {
       local dracula = require("dracula")
       dracula.setup({
         overrides = {
-          -- NormalFloat = { fg = "#282A36", bg = "#44475A" },
-          NormalFloat = { bg = "#44475A" },
+          -- Make floating window more visible aainst default background
+          NormalFloat = { bg = "#2E303F" },
         },
       })
 

@@ -4,9 +4,9 @@
 
 -- Shorten function name and set default options
 -- local keymap = vim.keymap.set
-function keymap(mode, lhs, rhs, opt)
-  opts = vim.tbl_deep_extend("force", { noremap = true, silent = true }, opts or {})
-  vim.keymap.set(mode, lhs, rhs, opt)
+local function keymap(mode, lhs, rhs, opt)
+  local opts = vim.tbl_deep_extend("force", { noremap = true, silent = true }, opt or {})
+  vim.keymap.set(mode, lhs, rhs, opts)
 end
 
 -- Modes
@@ -79,6 +79,9 @@ keymap("n", "<leader>d", ":bp<bar>sp<bar>bn<bar>bd<CR>", { desc = "Delete Buffer
 -- save in insert mode
 -- (may want to go gack to the old <leader>w method - try it for a while)
 keymap({ "i", "v", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
+
+-- Help on keyword where curson is
+keymap({ "i", "n" }, "<A-h>", ':h <C-R>=expand("<cword>")<cr><cr>', { desc = "Help on cursor" })
 
 -- quit
 keymap("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
