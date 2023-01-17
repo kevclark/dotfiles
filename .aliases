@@ -10,6 +10,8 @@ alias crtinfo='function _crtinfo(){ openssl x509 -in $1 -noout -text; };_crtinfo
 alias cpwd='pwd | tr -d '\n' | xclip -selection c'
 alias ff='firefox'
 alias se='sudoedit'
+alias fd='fdfind'
+alias lg=lazygit
 
 # Network specific aliases
 if [ -f $HOME/.network_aliases ]; then
@@ -30,3 +32,4 @@ alias dt=dotfiles
 alias dtst="dt status"
 alias dtd="dt diff"
 alias dta="dt add . -u"
+alias lgdot="lg --git-dir=$HOME/.dotfiles --work-tree=$HOME"

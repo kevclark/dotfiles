@@ -35,6 +35,7 @@ local has_fdo, freedesktop = pcall(require, "freedesktop")
 local fs_widget = require("awesome-wm-widgets.fs-widget.fs-widget")
 local cpu_widget = require("awesome-wm-widgets.cpu-widget.cpu-widget")
 local ram_widget = require("awesome-wm-widgets.ram-widget.ram-widget")
+local calendar_widget = require("awesome-wm-widgets.calendar-widget.calendar")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -66,7 +67,7 @@ end
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "x-terminal-emulator"
+terminal = "alacritty"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -146,6 +147,14 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 -- {{{ Wibar
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock()
+cw = calendar_widget({
+  placement = 'top_right'
+})
+
+mytextclock:connect_signal("button::press",
+  function(_,_,_,button)
+    if button == 1 then cw.toggle() end
+  end)
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
