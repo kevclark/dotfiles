@@ -165,6 +165,14 @@ return {
     },
   },
 
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    opts = {
+      show_trailing_blankline_indent = true,
+      show_current_context = true,
+    },
+  },
+
   -- disable alpha (the dashboad)
   { "goolord/alpha-nvim", enabled = false },
 }

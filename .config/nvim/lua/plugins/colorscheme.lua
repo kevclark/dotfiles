@@ -37,6 +37,13 @@ return {
     priority = 1000,
   },
 
+  -- noctis
+  {
+    "talha-akram/noctis.nvim",
+    lazy = false,
+    priority = 1000,
+  },
+
   {
     "Mofiqul/dracula.nvim",
     lazy = false,
