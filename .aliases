@@ -32,4 +32,5 @@ alias dt=dotfiles
 alias dtst="dt status"
 alias dtd="dt diff"
 alias dta="dt add . -u"
+alias dtcm="dt commit -m"
 alias lgdot="lg --git-dir=$HOME/.dotfiles --work-tree=$HOME"
