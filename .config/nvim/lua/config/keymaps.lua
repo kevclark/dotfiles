@@ -17,6 +17,11 @@ end
 --   term_mode = "t",
 --   command_mode = "c",
 
+-- Remove some keymaps from LazyVim and revert binding to vim defaults
+-- These where mapped to Prev and Next buffer - prefer the old vim bindings of jumping to top and botton of buffer
+vim.keymap.del("n", "<S-h>")
+vim.keymap.del("n", "<S-l>")
+
 -- Better window navigation
 keymap("n", "<C-Up>", "<C-w>k", { desc = "Go to upper window" })
 keymap("n", "<C-Down>", "<C-w>j", { desc = "Go to lower window" })
