@@ -146,25 +146,26 @@ return {
           },
           lualine_c = {
             { "filename", path = 1, symbols = { modified = "[+]", readonly = "[-]", unnamed = "" } },
-                    -- stylua: ignore
-                    {
-                        function() return require("nvim-navic").get_location() end,
-                        cond = function() return require("nvim-navic").is_available() end,
-                    },
+            -- stylua: ignore
+            {
+              function() return require("nvim-navic").get_location() end,
+              cond = function() return require("nvim-navic").is_available() end,
+            },
           },
           lualine_x = {
-                    -- stylua: ignore
-                    {
-                        function() return require("noice").api.status.command.get() end,
-                        cond = function() return require("noice").api.status.command.has() end,
-                        color = fg("Statement")
-                    },
-                    -- stylua: ignore
-                    {
-                        function() return require("noice").api.status.mode.get() end,
-                        cond = function() return require("noice").api.status.mode.has() end,
-                        color = fg("Constant") ,
-                    },
+            -- stylua: ignore
+            {
+              function() return require("noice").api.status.command.get() end,
+              cond = function() return require("noice").api.status.command.has() end,
+              color = fg("Statement")
+            },
+            -- stylua: ignore
+            {
+              function() return require("noice").api.status.mode.get() end,
+              cond = function() return require("noice").api.status.mode.has() end,
+              color = fg("Constant") ,
+            },
+            -- stylua: ignore
             { require("lazy.status").updates, cond = require("lazy.status").has_updates, color = fg("Special") },
             {
               "diff",
@@ -217,9 +218,7 @@ return {
   -- Add project.nvim
   {
     "ahmedkhalf/project.nvim",
-    cmd = "ProjectRoot",
-    -- need to find a suitable event to load this plugin rather that from boot
-    lazy = false,
+    event = "VeryLazy",
     config = function()
       require("telescope").load_extension("projects")
       require("project_nvim").setup({})
