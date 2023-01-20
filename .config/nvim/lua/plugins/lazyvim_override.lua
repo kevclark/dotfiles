@@ -84,6 +84,36 @@ return {
     },
   },
 
+  -- add more treesitter parsers
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        "bash",
+        "help",
+        "html",
+        "javascript",
+        "json",
+        "lua",
+        "markdown",
+        "markdown_inline",
+        "python",
+        "query",
+        "regex",
+        "tsx",
+        "typescript",
+        "vim",
+        "yaml",
+        "c",
+        "cmake",
+        "go",
+        "make",
+        "rust",
+        "toml",
+      },
+    },
+  },
+
   {
     "nvim-lualine/lualine.nvim",
     opts = function()
@@ -170,6 +200,38 @@ return {
     opts = {
       show_trailing_blankline_indent = true,
       show_current_context = true,
+    },
+  },
+
+  -- LazyVim bindings were getting hdden by python lsp function jumbs
+  -- appears to be broken for lua files
+  {
+    "RRethy/vim-illuminate",
+    -- stylua: ignore
+    keys = {
+      { "}}", function() require("illuminate").goto_next_reference(false) end, desc = "Next Reference", },
+      { "{{", function() require("illuminate").goto_prev_reference(false) end, desc = "Prev Reference" },
+    },
+  },
+
+  -- Add project.nvim
+  {
+    "ahmedkhalf/project.nvim",
+    cmd = "ProjectRoot",
+    -- need to find a suitable event to load this plugin rather that from boot
+    lazy = false,
+    config = function()
+      require("telescope").load_extension("projects")
+      require("project_nvim").setup({})
+    end,
+    keys = {
+      -- add a keymap to browse projects
+      -- stylua: ignore
+      {
+        "<leader>sp",
+        function() require("telescope").extensions.projects.projects() end,
+        desc = "Projects",
+      },
     },
   },
 
