@@ -234,6 +234,37 @@ return {
     },
   },
 
+  -- another sessino manager
+  {
+    "gennaro-tedesco/nvim-possession",
+    dependencies = {
+      "ibhagwan/fzf-lua",
+    },
+    config = true,
+    keys = {
+      -- add a keymap to view sessions
+      -- stylua: ignore
+      {
+        "<leader>qv",
+        function() require("nvim-possession").list() end,
+        desc = "View Sessions",
+      },
+      -- add a keymap to add a session
+      -- stylua: ignore
+      {
+        "<leader>qn",
+        function() require("nvim-possession").new() end,
+        desc = "Add Session",
+      },
+      -- add a keymap to update a session
+      -- stylua: ignore
+      {
+        "<leader>qu",
+        function() require("nvim-possession").update() end,
+        desc = "Update Session",
+      },
+    },
+  },
   -- disable alpha (the dashboad)
   { "goolord/alpha-nvim", enabled = false },
 }
