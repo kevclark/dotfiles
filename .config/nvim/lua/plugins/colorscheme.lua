@@ -49,20 +49,21 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
-      local gutter_fg = "#4B5263"
-      -- local gutter_fg = "#3b4261"
       local dracula = require("dracula")
+      local colors = require("dracula.palette")
       dracula.setup({
         italic_comment = true,
         overrides = {
+          -- Match parenthesis in red
+          MatchParen = { fg = colors.red, bold = true },
           -- Make floating window more visible aainst default background
           NormalFloat = { bg = "#2E303F" },
           -- Add hl for vim-illuminate
-          illuminatedWord = { bg = gutter_fg },
-          illuminatedCurWord = { bg = gutter_fg },
-          IlluminatedWordText = { bg = gutter_fg },
-          IlluminatedWordRead = { bg = gutter_fg },
-          IlluminatedWordWrite = { bg = gutter_fg },
+          illuminatedWord = { bg = colors.gutter_fg },
+          illuminatedCurWord = { bg = colors.gutter_fg },
+          IlluminatedWordText = { bg = colors.gutter_fg },
+          IlluminatedWordRead = { bg = colors.gutter_fg },
+          IlluminatedWordWrite = { bg = colors.gutter_fg },
         },
       })
 

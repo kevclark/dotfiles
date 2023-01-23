@@ -147,7 +147,7 @@ return {
 
       return {
         options = {
-          theme = "gruvbox",
+          theme = "tokyonight",
         },
         sections = {
           lualine_b = {
