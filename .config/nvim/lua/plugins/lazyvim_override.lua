@@ -84,6 +84,24 @@ return {
     },
   },
 
+  -- Cannot add to LazyVim null-ls spec, so is repaced here
+  -- add more linters / formatters
+  {
+    "jose-elias-alvarez/null-ls.nvim",
+    opts = function()
+      local nls = require("null-ls")
+      return {
+        sources = {
+          nls.builtins.formatting.stylua,
+          nls.builtins.diagnostics.flake8,
+          nls.builtins.formatting.black,
+          nls.builtins.diagnostics.yamllint,
+          nls.builtins.formatting.yamlfmt,
+        },
+      }
+    end,
+  },
+
   -- add more treesitter parsers
   {
     "nvim-treesitter/nvim-treesitter",
@@ -163,7 +181,7 @@ return {
             {
               function() return require("noice").api.status.mode.get() end,
               cond = function() return require("noice").api.status.mode.has() end,
-              color = fg("Constant") ,
+              color = fg("Constant"),
             },
             -- stylua: ignore
             { require("lazy.status").updates, cond = require("lazy.status").has_updates, color = fg("Special") },
@@ -201,17 +219,6 @@ return {
     opts = {
       show_trailing_blankline_indent = true,
       show_current_context = true,
-    },
-  },
-
-  -- LazyVim bindings were getting hdden by python lsp function jumbs
-  -- appears to be broken for lua files
-  {
-    "RRethy/vim-illuminate",
-    -- stylua: ignore
-    keys = {
-      { "}}", function() require("illuminate").goto_next_reference(false) end, desc = "Next Reference", },
-      { "{{", function() require("illuminate").goto_prev_reference(false) end, desc = "Prev Reference" },
     },
   },
 
