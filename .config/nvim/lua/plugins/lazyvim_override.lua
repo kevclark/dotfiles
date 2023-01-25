@@ -9,6 +9,8 @@ return {
   -- Configure LazyVim to load gruvbox
   {
     "LazyVim/LazyVim",
+    -- use latest dev version of LazyVim
+    version = false,
     opts = {
       colorscheme = "dracula",
     },
@@ -206,7 +208,7 @@ return {
 
   -- bufferline
   {
-    "akinsho/nvim-bufferline.lua",
+    "akinsho/bufferline.nvim",
     opts = {
       options = {
         always_show_bufferline = true,
