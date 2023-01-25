@@ -76,6 +76,10 @@ return {
       diagnostics = {
         virtual_text = false, -- disable inline diagnostics
       },
+      -- Disable autoformat on save that LazyVim enables
+      -- don't want this on legacy projects that are using a different
+      -- formatter tool
+      autoformat = false,
       servers = {
         -- lsp servers will be automatically installed with mason and loaded with lspconfig
         pyright = {},
