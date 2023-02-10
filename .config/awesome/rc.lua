@@ -794,14 +794,15 @@ beautiful.useless_gap = 3
 beautiful.notification_icon_size = 100
 
 -- Autostart
-awful.spawn.with_shell("changeres --preset")
+awful.spawn.with_shell("changeres --preset; sleep 1")
 awful.spawn.once("nitrogen --restore")
 awful.spawn.with_shell("nm-applet")
 awful.spawn.with_shell("numlockx on")
 awful.spawn.once("gnome-screensaver &")
 awful.spawn.once("xautolock -time 30 -locker gnomelock-gnome-screensaver &")
 awful.spawn.once("picom -b")
-awful.spawn.once("togglekeymap wide-dh -s")
+-- if Corne is not attached do not set local keymap
+awful.spawn.with_shell("corncheck && togglekeymap wide-dh -s")
 
 -- Setup keyboard for US
 -- To get the £ sign, type ,scroll lock, l, - (don't need to hold keys together)
