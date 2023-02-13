@@ -22,11 +22,22 @@ end
 vim.keymap.del("n", "<S-h>")
 vim.keymap.del("n", "<S-l>")
 
+-- Remove the defaut keymaps for the LazyVim terminal shortcuts
+vim.keymap.del("n", "<leader>ft")
+vim.keymap.del("n", "<leader>fT")
+
 -- Better window navigation
 keymap("n", "<C-Up>", "<C-w>k", { desc = "Go to upper window" })
 keymap("n", "<C-Down>", "<C-w>j", { desc = "Go to lower window" })
 keymap("n", "<C-Left>", "<C-w>h", { desc = "Go to left window" })
 keymap("n", "<C-Right>", "<C-w>l", { desc = "Go to right window" })
+
+-- Window nav in and out of terminals
+keymap("t", "<esc>", [[<C-\><C-n>]], { desc = "Exit terminal mode" })
+keymap("t", "<C-Up>", [[<Cmd>wincmd k<CR>]], { desc = "Go to upper window" })
+keymap("t", "<C-Down>", [[<Cmd>wincmd j<CR>]], { desc = "Go to lower window" })
+keymap("t", "<C-Left>", [[<Cmd>wincmd h<CR>]], { desc = "Go to left window" })
+keymap("t", "<C-Right>", [[<Cmd>wincmd l<CR>]], { desc = "Go to right window" })
 
 -- Resize with arrows
 keymap("n", "<S-Up>", ":resize +2<CR>", { desc = "Increase window height" })
