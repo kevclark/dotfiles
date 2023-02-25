@@ -241,7 +241,11 @@ return {
     event = "VeryLazy",
     config = function()
       require("telescope").load_extension("projects")
-      require("project_nvim").setup({})
+      require("project_nvim").setup({
+        -- stop changing cwd when entering a buffer
+        manual_mode = true,
+        silent_chdir = false,
+      })
     end,
     keys = {
       -- add a keymap to browse projects
