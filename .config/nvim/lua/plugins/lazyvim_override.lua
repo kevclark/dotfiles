@@ -289,6 +289,24 @@ return {
       },
     },
   },
+
+  -- add symbol navigation
+  {
+    "simrat39/symbols-outline.nvim",
+    cmd = "SymbolsOutline",
+    version = false,
+    opts = function()
+      require("symbols-outline").setup() 
+    end,
+    keys = {
+      {
+        "<leader>cs",
+        "<cmd>SymbolsOutline<cr>",
+        desc = "Symbols",
+      },
+    },
+  },
+
   -- disable alpha (the dashboad)
   { "goolord/alpha-nvim", enabled = false },
 }
