@@ -296,7 +296,7 @@ return {
     cmd = "SymbolsOutline",
     version = false,
     opts = function()
-      require("symbols-outline").setup() 
+      require("symbols-outline").setup()
     end,
     keys = {
       {
@@ -305,6 +305,22 @@ return {
         desc = "Symbols",
       },
     },
+  },
+
+  -- diffview
+  {
+    "sindrets/diffview.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    cmd = { "DiffviewOpen", "DiffviewToggleFiles", "DiffviewFileHistory" },
+    config = function()
+      require("diffview").setup({
+        git_cmd = { "/home/kev/tools/git/git" },  -- min git version higher than available on U20.04
+        merge_tool = {
+          -- Config for conflicted files in diff views during a merge or rebase.
+          layout = "diff4_mixed",
+        },
+      })
+    end,
   },
 
   -- disable alpha (the dashboad)
