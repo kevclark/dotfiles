@@ -321,6 +321,9 @@ return {
         },
       })
     end,
+    keys = {
+      { "<leader>gd", "<cmd>DiffviewOpen<cr>", desc = "Diffview" },
+    }
   },
 
   -- disable alpha (the dashboad)
