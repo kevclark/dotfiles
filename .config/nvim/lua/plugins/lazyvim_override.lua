@@ -63,15 +63,6 @@ return {
       { "<leader>fg", Util.telescope("git_files"), desc = "Git files (root dir)" },
       { "<leader>fG", Util.telescope("git_files", { cwd = false, use_git_root = false }), desc = "Git Files (cwd)" },
     },
-    -- change some options
-    -- opts = {
-    --   defaults = {
-    --     layout_strategy = "horizontal",
-    --     layout_config = { prompt_position = "top" },
-    --     sorting_strategy = "ascending",
-    --     winblend = 0,
-    --   },
-    -- },
   },
 
   -- add other languages to lspconfig
@@ -97,21 +88,14 @@ return {
     },
   },
 
-  -- Cannot add to LazyVim null-ls spec, so is repaced here
   -- add more linters / formatters
   {
     "jose-elias-alvarez/null-ls.nvim",
-    opts = function()
+    opts = function(_, opts)
       local nls = require("null-ls")
-      return {
-        sources = {
-          nls.builtins.formatting.stylua,
-          nls.builtins.diagnostics.flake8,
-          nls.builtins.formatting.black,
-          nls.builtins.diagnostics.yamllint,
-          nls.builtins.formatting.yamlfmt,
-        },
-      }
+      table.insert(opts.sources, nls.builtins.formatting.black)
+      table.insert(opts.sources, nls.builtins.diagnostics.yamllint)
+      table.insert(opts.sources, nls.builtins.formatting.yamlfmt)
     end,
   },
 
@@ -258,7 +242,7 @@ return {
     },
   },
 
-  -- another sessino manager
+  -- another session manager
   {
     "gennaro-tedesco/nvim-possession",
     dependencies = {
@@ -314,7 +298,7 @@ return {
     cmd = { "DiffviewOpen", "DiffviewToggleFiles", "DiffviewFileHistory" },
     config = function()
       require("diffview").setup({
-        git_cmd = { "/home/kev/tools/git/git" },  -- min git version higher than available on U20.04
+        git_cmd = { "/home/kev/tools/git/git" }, -- min git version higher than available on U20.04
         merge_tool = {
           -- Config for conflicted files in diff views during a merge or rebase.
           layout = "diff4_mixed",
@@ -323,7 +307,37 @@ return {
     end,
     keys = {
       { "<leader>gd", "<cmd>DiffviewOpen<cr>", desc = "Diffview" },
-    }
+    },
+  },
+
+  -- override cmp confirm mapping
+  -- and change completion length trigger
+  {
+    "hrsh7th/nvim-cmp",
+    ---@param opts cmp.ConfigSchema
+    opts = function(_, opts)
+      local cmp = require("cmp")
+
+      opts.mapping = cmp.mapping.preset.insert({
+        ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+        ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+        ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+        ["<C-f>"] = cmp.mapping.scroll_docs(4),
+        ["<C-Space>"] = cmp.mapping.complete(),
+        ["<C-e>"] = cmp.mapping.abort(),
+        ["<TAB>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        ["<S-TAB>"] = cmp.mapping.confirm({
+          behavior = cmp.ConfirmBehavior.Replace,
+          select = true,
+        }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+      })
+      opts.sources = cmp.config.sources({
+        { name = "nvim_lsp" },
+        { name = "luasnip", keyword_length = 2 },
+        { name = "buffer", keyword_length = 3 },
+        { name = "path" },
+      })
+    end,
   },
 
   -- disable alpha (the dashboad)
