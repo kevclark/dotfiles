@@ -96,6 +96,7 @@ return {
       table.insert(opts.sources, nls.builtins.formatting.black)
       table.insert(opts.sources, nls.builtins.diagnostics.yamllint)
       table.insert(opts.sources, nls.builtins.formatting.yamlfmt)
+      table.insert(opts.sources, nls.builtins.diagnostics.flake8)
     end,
   },
 
