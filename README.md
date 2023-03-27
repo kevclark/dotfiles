@@ -42,6 +42,13 @@ build-dep wasn't enough to allow the build of awesome.  The following packages a
 ```
 sudo apt install libxcb-xfixes0-dev
 ```
+> **Warning**
+> Firefox can take upto 25sec to boot from cold due to `xdg-portal-desktop` being installed\
+> when using awesomewm.
+>
+> Axe em:\
+> `apt remove "xdg-desktop-portal*"`
+
 [Ripgrep](https://github.com/BurntSushi/ripgrep)
 
 [Fzf](https://github.com/junegunn/fzf)
