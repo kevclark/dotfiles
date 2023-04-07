@@ -85,9 +85,9 @@ keymap("n", "n", "nzzzv")
 keymap("n", "N", "Nzzzv")
 
 -- windows
-keymap("n", "<leader>wd", "<C-W>c", { desc = "delete-window" })
-keymap("n", "<leader>ws", "<C-W>s", { desc = "split-window-below" })
-keymap("n", "<leader>wv", "<C-W>v", { desc = "split-window-right" })
+keymap("n", "<leader>wd", "<C-W>c", { desc = "Delete window" })
+keymap("n", "<leader>wh", "<C-W>s", { desc = "Horizontal split below" })
+keymap("n", "<leader>wv", "<C-W>v", { desc = "Veritcal split right" })
 
 -- Delete buffer without removing window / split
 keymap("n", "<leader>d", ":bp<bar>sp<bar>bn<bar>bd<CR>", { desc = "Delete Buffer, keep window/split" })
