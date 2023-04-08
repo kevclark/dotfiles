@@ -80,10 +80,22 @@ return {
       autoformat = false,
       servers = {
         -- lsp servers will be automatically installed with mason and loaded with lspconfig
+        -- mason = false, -- set to false if you don't want this server to be installed with mason
         pyright = {},
         clangd = {},
         bashls = {},
         yamlls = {},
+        lua_ls = {
+          settings = {
+            Lua = {
+              -- disable lsp semantic highlight for lua files as it is not currently working with
+              -- nvim 0.9 with dracula.nvim
+              semantic = {
+                enable = false,
+              },
+            },
+          },
+        },
       },
     },
   },
