@@ -48,6 +48,7 @@ local options = {
   undofile = true, -- undodir must exist
   colorcolumn = "100", -- file width column indicator
   wildmode = "longest:full,full", -- Command-line completion mode
+  foldenable = false,   -- disable default fold view if present in a file
 }
 
 local globals = {
