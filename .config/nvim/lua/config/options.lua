@@ -72,8 +72,6 @@ vim.opt.listchars:append("tab:>-")
 vim.opt.listchars:append("trail:~")
 vim.opt.listchars:append("extends:>")
 vim.opt.listchars:append("precedes:<")
-vim.opt.listchars:append("lead:⋅")
-vim.opt.listchars:append("multispace:⋅⋅⋅")
 vim.opt.listchars:append("eol:↴")
 
 for k, v in pairs(options) do

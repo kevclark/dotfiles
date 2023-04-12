@@ -13,6 +13,8 @@ alias se='sudoedit'
 alias fd='fdfind'
 alias lg=lazygit
 alias mtlvim='nvim -c DiffviewOpen'
+# Check if we're currently in a tmux session
+alias tch='[[ -n "${TMUX+set}" ]] && tmux display-message -p "#S"'
 
 # Network specific aliases
 if [ -f $HOME/.network_aliases ]; then
@@ -34,4 +36,7 @@ alias dtst="dt status"
 alias dtd="dt diff"
 alias dta="dt add . -u"
 alias dtcm="dt commit -m"
+alias dtrhh="dt reset --hard"
+alias dtpsh="dt push"
+alias dtpll="dt pull"
 alias lgdot="lg --git-dir=$HOME/.dotfiles --work-tree=$HOME"

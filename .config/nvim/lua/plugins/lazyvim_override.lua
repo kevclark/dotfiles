@@ -85,17 +85,7 @@ return {
         clangd = {},
         bashls = {},
         yamlls = {},
-        lua_ls = {
-          settings = {
-            Lua = {
-              -- disable lsp semantic highlight for lua files as it is not currently working with
-              -- nvim 0.9 with dracula.nvim
-              semantic = {
-                enable = false,
-              },
-            },
-          },
-        },
+        lua_ls = {},
       },
     },
   },

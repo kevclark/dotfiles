@@ -45,31 +45,18 @@ return {
   },
 
   {
-    "Mofiqul/dracula.nvim",
+    "maxmx03/dracula.nvim",
     lazy = false,
     priority = 1000,
     config = function()
       local dracula = require("dracula")
-      local colors = require("dracula.palette")
+
       dracula.setup({
-        italic_comment = true,
-        overrides = {
-          -- Match parenthesis in red
-          MatchParen = { fg = colors.red, bold = true },
-          -- Make floating window more visible aainst default background
-          NormalFloat = { bg = "#2E303F" },
-          -- Add hl for vim-illuminate
-          illuminatedWord = { bg = colors.gutter_fg },
-          illuminatedCurWord = { bg = colors.gutter_fg },
-          IlluminatedWordText = { bg = colors.gutter_fg },
-          IlluminatedWordRead = { bg = colors.gutter_fg },
-          IlluminatedWordWrite = { bg = colors.gutter_fg },
+        override = {
+          -- make boolean values bold
+          ['@boolean'] = { bold = true },
         },
       })
-
-      -- the colorscheme will be set from lazyvim_override.lua
-      -- local dracula = require("dracula")
-      -- dracula.load()
-    end,
+    end
   },
 }

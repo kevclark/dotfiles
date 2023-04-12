@@ -331,7 +331,7 @@ shell:
  # stop GTK programs from launching from the cmdline
  args:
    - -c
-   - unset GDK_PIXBUF_MODULEDIR && unset GDK_PIXBUF_MODULE_FILE && exec zsh
+   - unset GDK_PIXBUF_MODULEDIR && unset GDK_PIXBUF_MODULE_FILE && tmux
 
 # Startup directory
 #
