@@ -52,6 +52,7 @@ return {
     "nvim-neorg/neorg",
     cmd = "Neorg",
     build = ":Neorg sync-parsers",
+    version = false,
     opts = {
       load = {
         ["core.defaults"] = {}, -- Loads default behaviour
@@ -99,6 +100,13 @@ return {
       },
     },
     dependencies = { { "nvim-lua/plenary.nvim" } },
+  },
+
+  {
+    "iamcco/markdown-preview.nvim",
+    build = ":call mkdp#util#install()",
+    cmd = { "MarkdownPreview", "MarkdownPreviewToggle" },
+    version = false,
   },
 
 }

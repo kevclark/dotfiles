@@ -73,6 +73,9 @@ keymap({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hl
 keymap("v", "p", '"_dP', { desc = "Send to the black hole before pasting" })
 keymap("v", ",d", '"_d', { desc = "Send to the black hole instead moving to register" })
 
+-- yank current buffer path to system clipboard
+keymap("n", "yp", ":let @+=expand('%:p')<CR>", { desc = "Current buffer file path" })
+
 -- Should system clipboard only copied to via the leader?
 -- keymap({"n", "v"}, "<leader>y", [["+y]])
 -- keymap("n", "<leader>Y", [["+Y]])
@@ -105,6 +108,9 @@ keymap({ "i", "v", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" 
 
 -- Help on keyword where curson is
 keymap({ "i", "n" }, "<A-h>", ':h <C-R>=expand("<cword>")<cr><cr>', { desc = "Help on cursor" })
+
+-- Markdown Preview
+keymap("n", "<C-P>", ":MarkdownPreviewToggle<CR>", { desc = "Markdown Preview" })
 
 -- quit
 keymap("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
