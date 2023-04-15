@@ -84,7 +84,6 @@ return {
         pyright = {},
         clangd = {},
         bashls = {},
-        yamlls = {},
         lua_ls = {},
       },
     },
