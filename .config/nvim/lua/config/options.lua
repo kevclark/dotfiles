@@ -55,6 +55,7 @@ local globals = {
   -- vim global options
   -- mapleader = " ",
   -- maplocalleader = " ",
+  tmux_navigator_no_mappings = 1,   -- disable tmux plugin vim-tmux-navigator key bindings
   wildmenu = true,
   wildignore = "*.pyc,*_build/*,**/.git/*", -- ignore files
 }

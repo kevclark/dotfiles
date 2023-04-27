@@ -342,6 +342,12 @@ return {
     end,
   },
 
+  -- vim-tmux-navigator
+  {
+    "christoomey/vim-tmux-navigator",
+    event = "VeryLazy",
+  },
+
   -- disable alpha (the dashboad)
   { "goolord/alpha-nvim", enabled = false },
 }

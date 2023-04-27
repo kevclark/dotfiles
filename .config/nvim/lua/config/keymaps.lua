@@ -27,10 +27,10 @@ vim.keymap.del("n", "<leader>ft")
 vim.keymap.del("n", "<leader>fT")
 
 -- Better window navigation
-keymap("n", "<C-Up>", "<C-w>k", { desc = "Go to upper window" })
-keymap("n", "<C-Down>", "<C-w>j", { desc = "Go to lower window" })
-keymap("n", "<C-Left>", "<C-w>h", { desc = "Go to left window" })
-keymap("n", "<C-Right>", "<C-w>l", { desc = "Go to right window" })
+keymap("n", "<C-Up>", ":TmuxNavigateUp<cr>", { desc = "Go to upper window" })
+keymap("n", "<C-Down>", ":TmuxNavigateDown<cr>", { desc = "Go to lower window" })
+keymap("n", "<C-Left>", ":TmuxNavigateLeft<cr>", { desc = "Go to left window" })
+keymap("n", "<C-Right>", ":TmuxNavigateRight<cr>", { desc = "Go to right window" })
 
 -- Window nav in and out of terminals
 keymap("t", "<esc>", [[<C-\><C-n>]], { desc = "Exit terminal mode" })
