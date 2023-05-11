@@ -12,6 +12,7 @@ alias ff='firefox'
 alias se='sudoedit'
 alias fd='fdfind'
 alias lg=lazygit
+alias bat=batcat
 alias mtlvim='nvim -c DiffviewOpen'
 # Check if we're currently in a tmux session
 alias tch='[[ -n "${TMUX+set}" ]] && tmux display-message -p "#S"'
