@@ -586,13 +586,13 @@ clientkeys = gears.table.join(
               {description = "move to screen", group = "client"}),
     awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end,
               {description = "toggle keep on top", group = "client"}),
-    awful.key({ modkey,           }, "n",
-        function (c)
-            -- The client currently has the input focus, so it cannot be
-            -- minimized, since minimized clients can't have the focus.
-            c.minimized = true
-        end ,
-        {description = "minimize", group = "client"}),
+    -- awful.key({ modkey,           }, "n",
+    --     function (c)
+    --         -- The client currently has the input focus, so it cannot be
+    --         -- minimized, since minimized clients can't have the focus.
+    --         c.minimized = true
+    --     end ,
+    --     {description = "minimize", group = "client"}),
     awful.key({ modkey,           }, "m",
         function (c)
             c.maximized = not c.maximized
@@ -815,7 +815,7 @@ awful.spawn.once("nitrogen --restore")
 awful.spawn.with_shell("nm-applet")
 awful.spawn.with_shell("numlockx on")
 awful.spawn.once("gnome-screensaver &")
-awful.spawn.once("xautolock -time 30 -locker gnomelock-gnome-screensaver &")
+awful.spawn.with_shell("xautolock -time 30 -locker gnomelock-gnome-screensaver &")
 awful.spawn.once("picom -b")
 -- if Corne is not attached do not set local keymap
 awful.spawn.with_shell("corncheck && togglekeymap wide-dh -s")
