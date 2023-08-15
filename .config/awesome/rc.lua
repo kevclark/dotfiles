@@ -258,15 +258,31 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             awful.widget.watch(         -- Display pending package updates (depends on OS service or cron running apt update)
-                { awful.util.shell, "-c", string.format("apt list --upgradable | wc -l") },
+                -- Take off one line if there is any output as the first line contains
+                -- Listing... Done
+                { awful.util.shell, "-c", string.format("apt list --upgradable | tail -n +2 | wc -l") },
                 600, -- 10 min
                 function(widget, stdout)
                     for line in stdout:gmatch("[^\r\n]+") do
-                        -- Take off one line if there is any output as the first line contains
-                        -- Listing... Done
-                        updates = line - 1
+                        updates = tonumber(line)
                         if (updates) > 0 then
                             widget:set_markup_silently(string.format('<span background="red" foreground="white"> UPDATES: %d </span> ', updates))
+                        else
+                            widget:set_text("")
+                        end
+                    end
+                end
+            ),
+            awful.widget.watch(         -- Display any pending package updates that are phased and will not be installed (depends on OS service or cron running apt update)
+                -- Take off one line if there is any output as the first line contains
+                -- Listing... Done
+                { awful.util.shell, "-c", string.format("apt list --upgradable | cut -d '/' -f1 | tail -n +2 | xargs apt-cache policy | rg -c phased") },
+                600, -- 10 min
+                function(widget, stdout)
+                    for line in stdout:gmatch("[^\r\n]+") do
+                        updates = tonumber(line)
+                        if (updates) > 0 then
+                            widget:set_markup_silently(string.format('<span background="blue" foreground="white"> PHASED: %d </span> ', updates))
                         else
                             widget:set_text("")
                         end
