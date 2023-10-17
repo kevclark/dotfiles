@@ -14,6 +14,8 @@ alias fd='fdfind'
 alias lg=lazygit
 alias bat=batcat
 alias mtlvim='nvim -c DiffviewOpen'
+alias musb='function _musb(){ udisksctl mount -b $1 ; };_musb'
+alias uusb='function _uusb(){ udisksctl unmount -b $1 ; };_uusb'
 # Check if we're currently in a tmux session
 alias tch='[[ -n "${TMUX+set}" ]] && tmux display-message -p "#S"'
 
