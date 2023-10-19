@@ -113,6 +113,11 @@ return {
 
   {
     "lewis6991/gitsigns.nvim",
+    opts = {
+      current_line_blame_opts = {
+        delay = 200,
+      },
+    },
     keys = {
       -- Toggle current line git blame
       { "<leader>ghB", ":Gitsigns toggle_current_line_blame<CR>", desc = "Toggle line blame" },
