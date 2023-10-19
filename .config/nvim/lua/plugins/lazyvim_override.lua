@@ -111,6 +111,14 @@ return {
     },
   },
 
+  {
+    "lewis6991/gitsigns.nvim",
+    keys = {
+      -- Toggle current line git blame
+      { "<leader>ghB", ":Gitsigns toggle_current_line_blame<CR>", desc = "Toggle line blame" },
+    },
+  },
+
   -- add more treesitter parsers
   {
     "nvim-treesitter/nvim-treesitter",
