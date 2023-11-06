@@ -818,7 +818,7 @@ awful.spawn.once("gnome-screensaver &")
 awful.spawn.with_shell("xautolock -time 30 -locker gnomelock-gnome-screensaver &")
 awful.spawn.once("picom -b")
 -- if Corne is not attached do not set local keymap
-awful.spawn.with_shell("corncheck && togglekeymap wide-dh -s")
+awful.spawn.with_shell("keebcheck && togglekeymap wide-dh -s")
 
 -- Setup keyboard for US
 -- To get the £ sign, type ,scroll lock, l, - (don't need to hold keys together)
