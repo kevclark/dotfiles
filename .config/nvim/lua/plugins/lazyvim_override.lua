@@ -91,7 +91,7 @@ return {
 
   -- add more linters / formatters
   {
-    "jose-elias-alvarez/null-ls.nvim",
+    "nvimtools/none-ls.nvim",
     opts = function(_, opts)
       local nls = require("null-ls")
       table.insert(opts.sources, nls.builtins.formatting.black)
@@ -210,14 +210,6 @@ return {
       options = {
         always_show_bufferline = true,
       },
-    },
-  },
-
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    opts = {
-      show_trailing_blankline_indent = true,
-      show_current_context = true,
     },
   },
 
