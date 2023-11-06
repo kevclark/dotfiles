@@ -10,10 +10,10 @@ curl https://raw.githubusercontent.com/kevclark/dotfiles/master/.dotfiles-script
 
 ## Stuff to apt install
 ```
-sudo apt install vim vim-gtk xclip byobu zsh zsh-autosuggestions zsh-syntax-highlighting \
-git htop minicom tree autojump python3-pip taskwarrior nitrogen numlockx xautolock \
+sudo apt install vim vim-gtk xclip tmux zsh zsh-autosuggestions zsh-syntax-highlighting \
+git htop btop minicom tree autojump python3-pip taskwarrior nitrogen numlockx xautolock \
 libcanberra-gtk-module rofi dmenu thunar i3lock-fancy lxappearance awesome awesome-extra \
-golang rustc light
+golang rust-all light libfuse2 bat fd-find python-is-python3
 ```
 Further stuff to install since moving to Neovim
 ```
@@ -64,9 +64,15 @@ git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh/
 npm from apt store is too old to work with lsp python server (pywright), so needs installing
 from upstream.
 ```
-sudo curl -sL https://deb.nodesource.com/setup_14.x | bash -
+curl -fsSL https://deb.nodesource.com/setup_lts.x | bash -
 sudo apt install nodejs
 sudo npm install -g neovim
+
+### Better terminal
+Install Alacritty
+```
+sudo snap install alacritty --edge --classic
+```
 ```
 ## Stuff to configure
 ### Roots Crontab
