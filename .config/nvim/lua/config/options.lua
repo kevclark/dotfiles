@@ -48,16 +48,20 @@ local options = {
   undofile = true, -- undodir must exist
   colorcolumn = "100", -- file width column indicator
   wildmode = "longest:full,full", -- Command-line completion mode
-  foldenable = false,   -- disable default fold view if present in a file
+  foldenable = false, -- disable default fold view if present in a file
 }
 
 local globals = {
   -- vim global options
   -- mapleader = " ",
   -- maplocalleader = " ",
-  tmux_navigator_no_mappings = 1,   -- disable tmux plugin vim-tmux-navigator key bindings
+  tmux_navigator_no_mappings = 1, -- disable tmux plugin vim-tmux-navigator key bindings
   wildmenu = true,
   wildignore = "*.pyc,*_build/*,**/.git/*", -- ignore files
+  -- Disable autoformat on save that LazyVim enables
+  -- don't want this on legacy projects that are using a different
+  -- formatter tool
+  autoformat = false,
 }
 
 -- allows neovim to access the system clipboard

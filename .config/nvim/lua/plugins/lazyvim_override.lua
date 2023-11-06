@@ -77,7 +77,7 @@ return {
       -- Disable autoformat on save that LazyVim enables
       -- don't want this on legacy projects that are using a different
       -- formatter tool
-      autoformat = false,
+      -- autoformat = false,
       servers = {
         -- lsp servers will be automatically installed with mason and loaded with lspconfig
         -- mason = false, -- set to false if you don't want this server to be installed with mason
@@ -89,16 +89,26 @@ return {
     },
   },
 
-  -- add more linters / formatters
   {
-    "nvimtools/none-ls.nvim",
-    opts = function(_, opts)
-      local nls = require("null-ls")
-      table.insert(opts.sources, nls.builtins.formatting.black)
-      table.insert(opts.sources, nls.builtins.diagnostics.yamllint)
-      table.insert(opts.sources, nls.builtins.formatting.yamlfmt)
-      table.insert(opts.sources, nls.builtins.diagnostics.flake8)
-    end,
+    "stevearc/conform.nvim",
+    opts = {
+      formatters_by_ft = {
+        python = { "black" },
+        yaml = { "yamlfmt" },
+        c = { "uncrustify" },
+      },
+    },
+  },
+
+  {
+    "mfussenegger/nvim-lint",
+    opts = {
+      linters_by_ft = {
+        cmake = { "cmakelint" },
+        python = { "pylint", "mypy" },
+        yaml = { "yamllint" },
+      },
+    },
   },
 
   -- add more treesitter parsers
@@ -163,11 +173,6 @@ return {
           },
           lualine_c = {
             { "filename", path = 1, symbols = { modified = "[+]", readonly = "[-]", unnamed = "" } },
-            -- stylua: ignore
-            {
-              function() return require("nvim-navic").get_location() end,
-              cond = function() return require("nvim-navic").is_available() end,
-            },
           },
           lualine_x = {
             -- stylua: ignore
@@ -341,5 +346,5 @@ return {
   },
 
   -- disable alpha (the dashboad)
-  { "goolord/alpha-nvim", enabled = false },
+  { "nvimdev/dashboard-nvim", enabled = false },
 }
