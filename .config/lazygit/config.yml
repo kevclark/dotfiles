@@ -1,6 +1,8 @@
 git:
   paging:
     colorArg: always
-    pager: delta --dark --paging=never --no-gitconfig --line-numbers
+    pager: delta --dark --paging=never --line-numbers
   log:
     showWholeGraph: true
+gui:
+  nerdFontsVersion: "3"
