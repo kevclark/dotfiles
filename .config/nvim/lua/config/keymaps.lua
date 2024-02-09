@@ -92,13 +92,6 @@ keymap("n", "<leader>wd", "<C-W>c", { desc = "Delete window" })
 keymap("n", "<leader>wh", "<C-W>s", { desc = "Horizontal split below" })
 keymap("n", "<leader>wv", "<C-W>v", { desc = "Veritcal split right" })
 
--- Neorg
-keymap("n", "<leader>ni", ":Neorg index<CR>", { desc = "Index"})
-keymap("n", "<leader>nq", ":Neorg return<CR>", { desc = "Exit Neorg"})
-keymap("n", "<leader>nt", ":Neorg toc<CR>", { desc = "View table on contents"})
-keymap("n", "<leader>nc", ":Neorg toggle-concealer<CR>", { desc = "Toggle concealer"})
-keymap("n", "<leader>nj", ":Neorg journal<CR>", { desc = "Journal picker"})
-
 -- Delete buffer without removing window / split
 keymap("n", "<leader>d", ":bp<bar>sp<bar>bn<bar>bd<CR>", { desc = "Delete Buffer, keep window/split" })
 
