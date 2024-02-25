@@ -7,7 +7,7 @@ alias gla='git log --graph --all --format="%C(auto)%h%Cgreen %cd%C(auto)%d%Cblue
 alias gmerge='git merge --no-ff'
 alias pcheck='repo forall -c '\''git status | egrep "Your branch is (behind|ahead)" && pwd && echo; git branch -vv --points-at HEAD | egrep "^[*]" | egrep  -v "(HEAD detached|no branch)" | egrep -vq "\[origin" && pwd && echo'\'''
 alias crtinfo='function _crtinfo(){ openssl x509 -in $1 -noout -text; };_crtinfo'
-alias cpwd='pwd | tr -d '\n' | xclip -selection c'
+alias cpwd='pwd | xclip -r -selection p'
 alias ff='firefox'
 alias se='sudoedit'
 alias fd='fdfind'
@@ -43,3 +43,6 @@ alias dtrhh="dt reset --hard"
 alias dtpsh="dt push"
 alias dtpll="dt pull"
 alias lgdot="lg --git-dir=$HOME/.dotfiles --work-tree=$HOME"
+alias fdc="fd --hidden --exclude .git | fzf | xclip -r -selection p"
+alias fdv="fd --hidden --exclude .git | fzf | xargs -d'\n' vim"
+alias fdx="fd --hidden --exclude .git | fzf-tmux -p | xargs -d'\n' xdg-open"

@@ -78,7 +78,7 @@ GIT_AUTO_FETCH_INTERVAL=600 # in seconds
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git autojump vi-mode git-auto-fetch command-not-found tmux)
+plugins=(git zoxide vi-mode git-auto-fetch command-not-found tmux fd fzf)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -127,5 +127,8 @@ fi
 
 # Enable starship prompt
 eval "$(starship init zsh)"
+
+# Enable zoxide as the autojump and replace built-in cd
+eval "$(zoxide init --cmd cd zsh)"
 
 export PATH="$HOME/.poetry/bin:$PATH"
