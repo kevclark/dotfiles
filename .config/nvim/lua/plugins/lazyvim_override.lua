@@ -124,6 +124,34 @@ return {
     },
   },
 
+  {
+    "NeogitOrg/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "sindrets/diffview.nvim",
+
+      "ibhagwan/fzf-lua",
+    },
+    cmd = "Neogit",
+    config = function()
+      require("neogit").setup({
+        -- "ascii"   is the graph the git CLI generates
+        -- "unicode" is the graph like https://github.com/rbong/vim-flog
+        graph_style = "unicode",
+        -- Used to generate URL's for branch popup action "pull request".
+        -- git_services = {
+        --   ["gitlab.com"] = "https://gitlab.com/${owner}/${repository}/merge_requests/new?merge_request[source_branch]=${branch_name}",
+        -- }
+        -- Disable line numbers and relative line numbers
+        disable_line_numbers = false,
+      })
+    end,
+    keys = {
+      { "<leader>gn", "<cmd>Neogit<cr>", desc = "Neogit" },
+    },
+  },
+
+
   -- add more treesitter parsers
   {
     "nvim-treesitter/nvim-treesitter",
