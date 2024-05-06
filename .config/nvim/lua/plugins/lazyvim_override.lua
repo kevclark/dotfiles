@@ -151,6 +151,17 @@ return {
     },
   },
 
+  {
+    "FabijanZulj/blame.nvim",
+    cmd = "BlameToggle",
+    config = function()
+      require("blame").setup()
+    end,
+    keys = {
+      { "<leader>gB", "<cmd>BlameToggle<cr>", desc = "Git Blame File" },
+    },
+  },
+
 
   -- add more treesitter parsers
   {
