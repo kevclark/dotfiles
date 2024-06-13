@@ -58,10 +58,8 @@ return {
         desc = "Buffer list",
       },
       -- override default LazyVim find files maps
-      { "<leader>ff", Util.telescope("find_files"), desc = "Find files (root dir)" },
-      { "<leader>fF", Util.telescope("find_files", { cwd = false }), desc = "Find Files (cwd)" },
-      { "<leader>fg", Util.telescope("git_files"), desc = "Git files (root dir)" },
-      { "<leader>fG", Util.telescope("git_files", { cwd = false, use_git_root = false }), desc = "Git Files (cwd)" },
+      { "<leader>fF", LazyVim.pick("auto", { cwd = nil }), desc = "Find Files (cwd)" },
+      { "<leader>fG", LazyVim.pick("auto", { cwd = nil, use_git_root = false }), desc = "Git Files (cwd)" },
     },
   },
 
