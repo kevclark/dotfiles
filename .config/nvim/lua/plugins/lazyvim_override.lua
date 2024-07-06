@@ -118,7 +118,7 @@ return {
     },
     keys = {
       -- Toggle current line git blame
-      { "<leader>ghB", ":Gitsigns toggle_current_line_blame<CR>", desc = "Toggle line blame" },
+      { "<leader>ghl", ":Gitsigns toggle_current_line_blame<CR>", desc = "Toggle line blame" },
     },
   },
 
