@@ -78,7 +78,7 @@ GIT_AUTO_FETCH_INTERVAL=600 # in seconds
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zoxide vi-mode git-auto-fetch command-not-found tmux fd fzf)
+plugins=(git zoxide vi-mode git-auto-fetch command-not-found tmux fzf)
 
 source $ZSH/oh-my-zsh.sh
 
