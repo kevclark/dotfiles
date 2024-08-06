@@ -13,7 +13,7 @@ curl https://raw.githubusercontent.com/kevclark/dotfiles/master/.dotfiles-script
 sudo apt install vim vim-gtk xclip tmux zsh zsh-autosuggestions zsh-syntax-highlighting \
 git htop btop minicom tree autojump python3-pip taskwarrior nitrogen numlockx xautolock \
 libcanberra-gtk-module rofi dmenu thunar i3lock-fancy lxappearance awesome awesome-extra \
-golang rust-all light libfuse2 bat fd-find python-is-python3
+golang rust-all light libfuse2 bat fd-find python-is-python3 maim xdotool
 ```
 Further stuff to install since moving to Neovim
 ```

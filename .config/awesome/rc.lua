@@ -72,10 +72,10 @@ editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
 -- screen grab setup from i3 config
-file_and_clip = "~/Pictures/screenshots/`date +%Y-%m-%d_%H:%M:%S`.png && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`"
-scrot_full = "scrot " .. file_and_clip
-scrot_focus = "scrot -u " .. file_and_clip
-scrot_selection = "scrot -s " .. file_and_clip
+file_and_clip = "~/Pictures/screenshots/`date +%Y-%m-%d_%H-%M-%S`.png && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`"
+grab_full = "maim " .. file_and_clip
+grab_focus = "maim -i `xdotool getactivewindow` " .. file_and_clip
+grab_selection = "maim -s " .. file_and_clip
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -502,9 +502,9 @@ globalkeys = gears.table.join(
               {description = "Thunar", group = "launcher"}),
 
     -- Screen grabs
-    awful.key({},                       "Print", function () awful.spawn.with_shell(scrot_full) end),
-    awful.key({ modkey          },      "Print", function () awful.spawn.with_shell(scrot_focus) end),
-    awful.key({ modkey, "Shift" },      "Print", nil, function () awful.spawn.with_shell(scrot_selection) end),
+    awful.key({},                       "Print", function () awful.spawn.with_shell(grab_full) end),
+    awful.key({ modkey          },      "Print", function () awful.spawn.with_shell(grab_focus) end),
+    awful.key({ modkey, "Shift" },      "Print", nil, function () awful.spawn.with_shell(grab_selection) end),
 
     -- Change screen resolution (Mod1 being the Alt key)
     awful.key({ modkey, "Mod1"  }, "Up",
