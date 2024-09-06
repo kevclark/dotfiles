@@ -495,8 +495,8 @@ globalkeys = gears.table.join(
               {description = "Toggle colemak (vanilla) keyboard", group = "custom"}),
 
     -- Applications
-    awful.key({ modkey  }, "b", function () awful.spawn("firefox") end,
-              {description = "Firefox", group = "launcher"}),
+    awful.key({ modkey  }, "b", function () awful.spawn("zen-browser") end,
+              {description = "zen-browser", group = "launcher"}),
 
     awful.key({ modkey  }, "e", function () awful.spawn("thunar") end,
               {description = "Thunar", group = "launcher"}),
