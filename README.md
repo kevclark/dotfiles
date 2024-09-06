@@ -29,6 +29,25 @@ Unpack the binary `~/bin` and `chmod +x`
 [awesomewm](https://github.com/awesomeWM/awesome) (for fixes ahead of the version offered
 by Canonical - compile from source).
 
+### Appman for Appimages
+```
+wget https://raw.githubusercontent.com/ivan-hc/AM/main/APP-MANAGER -O ~/.local/bin/appman && chmod a+x ~/.local/bin/appman
+```
+When launching `appman` for the first time it will ask where should appimages be installed. Create the following directory for this:
+```
+~/tools/appimages/
+```
+Install some appimages
+```
+appman -i nvim
+appman -i wezterm
+appman -i obsidian
+appman -i via
+appman -i vial
+appman -i zen-browser
+```
+After install they will be in the path under `~/.local/bin/`
+
 ### Building Awesome
 `build-dep` will install all source dev packages required to build awesome
 ```
