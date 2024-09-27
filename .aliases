@@ -18,6 +18,8 @@ alias musb='function _musb(){ udisksctl mount -b $1 ; };_musb'
 alias uusb='function _uusb(){ udisksctl unmount -b $1 ; };_uusb'
 # Check if we're currently in a tmux session
 alias tch='[[ -n "${TMUX+set}" ]] && tmux display-message -p "#S"'
+aptcheck='apt list --upgradable'
+aptphased='apt list --upgradable | cut -d / -f1 | tail -n +2 | xargs apt-cache policy | rg -B4 phased'
 
 # Network specific aliases
 if [ -f $HOME/.network_aliases ]; then
