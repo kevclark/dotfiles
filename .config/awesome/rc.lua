@@ -260,7 +260,7 @@ awful.screen.connect_for_each_screen(function(s)
             awful.widget.watch(         -- Display pending package updates (depends on OS service or cron running apt update)
                 -- Take off one line if there is any output as the first line contains
                 -- Listing... Done
-                { awful.util.shell, "-c", string.format("apt list --upgradable | tail -n +2 | wc -l") },
+                { awful.util.shell, "-c", string.format("apt list 2>/dev/null --upgradable | tail -n +2 | wc -l") },
                 600, -- 10 min
                 function(widget, stdout)
                     for line in stdout:gmatch("[^\r\n]+") do
@@ -276,7 +276,7 @@ awful.screen.connect_for_each_screen(function(s)
             awful.widget.watch(         -- Display any pending package updates that are phased and will not be installed (depends on OS service or cron running apt update)
                 -- Take off one line if there is any output as the first line contains
                 -- Listing... Done
-                { awful.util.shell, "-c", string.format("apt list --upgradable | cut -d '/' -f1 | tail -n +2 | xargs apt-cache policy | rg -c phased || true") },
+                { awful.util.shell, "-c", string.format("apt list 2>/dev/null --upgradable | cut -d '/' -f1 | tail -n +2 | xargs apt-cache policy | rg -c phased || true") },
                 600, -- 10 min
                 function(widget, stdout)
                     for line in stdout:gmatch("[^\r\n]+") do
