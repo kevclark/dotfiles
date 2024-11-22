@@ -395,6 +395,7 @@ return {
     event = "VeryLazy",
   },
 
-  -- disable alpha (the dashboad)
+  -- disable dashboards!
+  { "folke/snacks.nvim", opts = { dashboard = { enabled = false } } },
   { "nvimdev/dashboard-nvim", enabled = false },
 }
