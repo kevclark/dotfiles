@@ -287,6 +287,9 @@ awful.screen.connect_for_each_screen(function(s)
                             widget:set_text("")
                         end
                     end
+                    if stdout == nil or stdout == '' then
+                        widget:set_text("")
+                    end
                 end
             ),
             awful.widget.watch('bash -c "test -f /var/run/reboot-required && echo \' REBOOT NEEDED \'"', 600),
