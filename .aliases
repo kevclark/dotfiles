@@ -1,5 +1,6 @@
 # Common aliases
 
+alias ls='exa --icons=auto'
 alias lh='ll -h'
 alias gdiff='git difftool -d --no-symlinks'
 alias gl='git log --graph --format="%C(auto)%h%Cgreen %cd%C(auto)%d%Cblue %an%Creset %s" --date=short'

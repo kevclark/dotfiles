@@ -110,6 +110,13 @@ return {
   },
 
   {
+    "folke/which-key.nvim",
+      opts = {
+        preset = "modern"
+      },
+  },
+
+  {
     "lewis6991/gitsigns.nvim",
     opts = {
       current_line_blame_opts = {
