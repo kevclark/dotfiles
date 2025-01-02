@@ -62,10 +62,21 @@ config = {
         key = "UpArrow",
         action = wezterm.action.AdjustPaneSize { "Up", 5 }
     },
+    {
+        key = 't',
+        mods = 'LEADER',
+        action = wezterm.action.ShowTabNavigator,
+    },
+    {
+        key = 'p',
+        mods = 'LEADER',
+        -- keybinds
+        action = wezterm.action.ActivateCommandPalette,
+    },
   },
 
   -- tab bar
-  hide_tab_bar_if_only_one_tab = false,
+  hide_tab_bar_if_only_one_tab = true,
   tab_bar_at_bottom = true,
   use_fancy_tab_bar = false,
   tab_and_split_indices_are_zero_based = false
