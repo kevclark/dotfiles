@@ -23,12 +23,12 @@ config = {
         action = wezterm.action.CloseCurrentPane { confirm = true }
     },
     {
-        mods = "ALT",
+        mods = "SHIFT|ALT",
         key = "LeftArrow",
         action = wezterm.action.ActivateTabRelative(-1)
     },
     {
-        mods = "ALT",
+        mods = "SHIFT|ALT",
         key = "RightArrow",
         action = wezterm.action.ActivateTabRelative(1)
     },
