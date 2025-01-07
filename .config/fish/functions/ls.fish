@@ -1,3 +1,3 @@
 function ls -d 'Replace with exa'
-    exa --icons=auto $argv
+    eza --icons=auto $argv
 end
