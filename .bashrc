@@ -180,9 +180,4 @@ fi
 export PYTHON_BUILD_MIRROR_URL="http://files/poetry-pip/pyenv-support/python/"
 export PYTHON_BUILD_MIRROR_URL_SKIP_CHECKSUM=1
 
-export PATH="~/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
-
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

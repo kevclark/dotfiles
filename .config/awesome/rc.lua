@@ -142,7 +142,8 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock()
 cw = calendar_widget({
-  placement = 'top_right'
+  placement = 'top_right',
+  theme = 'outrun'
 })
 
 mytextclock:connect_signal("button::press",
@@ -322,7 +323,9 @@ awful.screen.connect_for_each_screen(function(s)
             },
             cpu_widget(),
             ram_widget(),
-            volume_widget(),
+            volume_widget{
+              card = 0
+            },
             fs_widget( { mounts = { '/' } } ),
             mykeyboardlayout,
             wibox.widget.systray(),
@@ -443,10 +446,10 @@ globalkeys = gears.table.join(
     awful.key({ modkey }, "p", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"}),
 
-    awful.key({ modkey }, "d", function() awful.spawn("dmenu_run") end,
+    awful.key({ modkey, "Shift" }, "d", function() awful.spawn("dmenu_run") end,
               {description = "show dmenu", group = "launcher"}),
 
-    awful.key({ modkey, "Shift" }, "d", function() awful.spawn("rofi -modi window,drun,run -show drun -sidebar-mode -font 'hack 10'") end,
+    awful.key({ modkey }, "d", function() awful.spawn.with_shell("$HOME/.config/rofi/scripts/launcher_t3") end,
               {description = "show rofi", group = "launcher"}),
 
     -- Brightness keys

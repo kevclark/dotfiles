@@ -1,5 +1,5 @@
 [plugin]
-deps = [{ use = "dedukun/bookmarks", rev = "202e450" }]
+deps = [{ use = "Reledia/glow", rev = "5ce76dc" }, { use = "dedukun/bookmarks", rev = "202e450" }]
 
 [flavor]
 deps = []

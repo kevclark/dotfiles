@@ -1,0 +1,3 @@
+# Wire now needs to know what keyring is in use
+# This could be an alias, however the command is not then in the path that can be found by the WM
+wire-desktop --password-store="gnome-libsecret"

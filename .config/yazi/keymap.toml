@@ -18,3 +18,16 @@ desc = "Delete a bookmark"
 on = [ "b", "D" ]
 run = "plugin bookmarks --args=delete_all"
 desc = "Delete all bookmarks"
+
+[[manager.prepend_keymap]]
+# glow.yazi
+on = ["<C-e>"]
+run = "seek 5"
+desc = "Scroll down"
+
+[[manager.prepend_keymap]]
+# glow.yazi
+on = ["<C-n>"]
+run = "seek -5"
+desc = "Scroll up"
+

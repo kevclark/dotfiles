@@ -1,6 +1,7 @@
 # Common aliases
 
 alias ls='exa --icons=auto'
+alias la='ll -a'
 alias lh='ll -h'
 alias gdiff='git difftool -d --no-symlinks'
 alias gl='git log --graph --format="%C(auto)%h%Cgreen %cd%C(auto)%d%Cblue %an%Creset %s" --date=short'
@@ -17,6 +18,7 @@ alias bat=batcat
 alias mtlvim='nvim -c DiffviewOpen'
 alias musb='function _musb(){ udisksctl mount -b $1 ; };_musb'
 alias uusb='function _uusb(){ udisksctl unmount -b $1 ; };_uusb'
+alias xoff='xset dpms force off'
 # Check if we're currently in a tmux session
 alias tch='[[ -n "${TMUX+set}" ]] && tmux display-message -p "#S"'
 alias aptcheck='apt list --upgradable 2>/dev/null'

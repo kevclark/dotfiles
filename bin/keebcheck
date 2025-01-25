@@ -2,11 +2,15 @@
 
 cornvid="4653"
 skeletylvid="a8f8"
+bastardvid="a8f8"
 
 if lsusb | grep -q "$cornvid" ; then
     echo "A beautiful Corne is attached!"
     return 1
 elif lsusb | grep -q "$skeletylvid" ; then
+    echo "A bastard keeb is attached!"
+    return 1
+elif lsusb | grep -q "$bastardvid" ; then
     echo "A bastard keeb is attached!"
     return 1
 else
