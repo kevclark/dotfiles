@@ -16,4 +16,4 @@ alias se=sudoedit
 alias fd=fdfind
 alias lg=lazygit
 alias bat=batcat
-alias dt=dotfiles
+alias dt=yadm

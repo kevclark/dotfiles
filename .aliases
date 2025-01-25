@@ -38,9 +38,8 @@ rget() {
 }
 
 # dotfiles repo aliases
-alias dotfiles="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
-alias gladot='git --git-dir=$HOME/.dotfiles --work-tree=$HOME log --graph --all --format="%C(auto)%h%Cgreen %cd%C(auto)%d%Cblue %an%Creset %s" --date=short'
-alias dt=dotfiles
+alias gladot='yadm log --graph --all --format="%C(auto)%h%Cgreen %cd%C(auto)%d%Cblue %an%Creset %s" --date=short'
+alias dt=yadm
 alias dtst="dt status"
 alias dtd="dt diff"
 alias dta="dt add . -u"
@@ -48,7 +47,7 @@ alias dtcm="dt commit -m"
 alias dtrhh="dt reset --hard"
 alias dtpsh="dt push"
 alias dtpll="dt pull"
-alias lgdot="lg --git-dir=$HOME/.dotfiles --work-tree=$HOME"
+alias lgdot="lg --git-dir=$HOME/.local/share/yadm/repo.git --work-tree=$HOME"
 alias fdc="fd --hidden --exclude .git | fzf | xclip -r -selection p"
 alias fdv="fd --hidden --exclude .git | fzf | xargs -d'\n' vim"
 alias fdx="fd --hidden --exclude .git | fzf-tmux -p | xargs -d'\n' xdg-open"
