@@ -176,8 +176,4 @@ if ! shopt -oq posix; then
   fi
 fi
 [ -r ~/.byobu/prompt ] && . ~/.byobu/prompt   #byobu-prompt#
-
-export PYTHON_BUILD_MIRROR_URL="http://files/poetry-pip/pyenv-support/python/"
-export PYTHON_BUILD_MIRROR_URL_SKIP_CHECKSUM=1
-
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
