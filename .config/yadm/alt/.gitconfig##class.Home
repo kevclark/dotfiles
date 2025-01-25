@@ -26,3 +26,5 @@
   navigate = true
   line-numbers = true
   side-by-side = true
+[init]
+  defaultBranch = main
