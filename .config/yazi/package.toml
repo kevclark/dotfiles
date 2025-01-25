@@ -1,5 +1,17 @@
-[plugin]
-deps = [{ use = "Reledia/glow", rev = "5ce76dc" }, { use = "dedukun/bookmarks", rev = "202e450" }]
+[[plugin.deps]]
+use = "Reledia/glow"
+rev = "5ce76dc"
+hash = "52e5f5c602962e7cbf874da28f52ba45"
+
+[[plugin.deps]]
+use = "dedukun/bookmarks"
+rev = "202e450"
+hash = "9e2f6f7381542d3adb3080b394b431b4"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:mount"
+rev = "8ed2537"
+hash = "9568ea5ec82fe3d99073a7341fda3da8"
 
 [flavor]
 deps = []

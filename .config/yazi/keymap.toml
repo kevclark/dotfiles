@@ -20,6 +20,10 @@ run = "plugin bookmarks --args=delete_all"
 desc = "Delete all bookmarks"
 
 [[manager.prepend_keymap]]
+on  = "M"
+run = 'plugin mount'
+
+[[manager.prepend_keymap]]
 # glow.yazi
 on = ["<C-e>"]
 run = "seek 5"
