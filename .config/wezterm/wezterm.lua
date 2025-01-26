@@ -1,10 +1,11 @@
 -- Pull in wezterm API
 local wezterm = require 'wezterm'
+local fontsettings = require 'fontsettings'
 
 local config = wezterm.config_builder()
 
 config = {
-  font_size = 11.0,
+  font_size = fontsettings.size,
   color_scheme = 'Dark+',
   -- color_scheme = 'Dracula',
   -- color_scheme = 'Bright Lights',

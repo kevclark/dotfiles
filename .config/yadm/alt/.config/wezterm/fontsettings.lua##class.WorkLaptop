@@ -1,0 +1,7 @@
+-- Font setting for specific laptop or desktop
+
+local fontsettings = {}
+
+fontsettings.size = 11.0
+
+return fontsettings
