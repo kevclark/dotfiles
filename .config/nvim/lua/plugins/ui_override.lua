@@ -5,5 +5,8 @@ return {
     cmd = { "MarkdownPreview", "MarkdownPreviewToggle" },
     version = false,
   },
-
+  {
+      "OXY2DEV/markview.nvim",
+      lazy = false
+  },
 }
