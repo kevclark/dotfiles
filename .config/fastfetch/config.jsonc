@@ -87,7 +87,9 @@
         {
             "key": "CPU          ",
             "keyColor": "yellow",
-            "type": "cpu"
+            "type": "cpu",
+	    "showPeCoreCount": true,
+	    "temp": true
         },
         {
             "key": "GPU          ",
@@ -99,6 +101,12 @@
             "keyColor": "magenta",
             "type": "memory"
         },
+	{
+	    "key": "Disk         ",
+	    "keyColor": "green",
+	    "type": "disk",
+	    "temp": true
+	},
         {
             "key": "Local IP     ",
             "keyColor": "red",
