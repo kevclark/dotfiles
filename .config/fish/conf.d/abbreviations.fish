@@ -11,9 +11,15 @@ abbr dtrhh 'dt reset --hard'
 abbr dtpsh 'dt push'
 abbr dtpll 'dt pull'
 
+# Get the Linux distribution family ID
+set dist_family_id (grep '^ID_LIKE=' /etc/os-release | cut -d '=' -f 2-)
+
 # Simple aliases
 alias se=sudoedit
 alias fd=fdfind
 alias lg=lazygit
-alias bat=batcat
+# set the following alias on Debian or Ubuntu systems only
+if [ "$dist_family_id" = "debian" ]
+    alias bat=batcat
+end
 alias dt=yadm
