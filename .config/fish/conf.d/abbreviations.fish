@@ -16,10 +16,10 @@ set dist_family_id (grep '^ID_LIKE=' /etc/os-release | cut -d '=' -f 2-)
 
 # Simple aliases
 alias se=sudoedit
-alias fd=fdfind
 alias lg=lazygit
 # set the following alias on Debian or Ubuntu systems only
 if [ "$dist_family_id" = "debian" ]
     alias bat=batcat
+    alias fd=fdfind
 end
 alias dt=yadm
