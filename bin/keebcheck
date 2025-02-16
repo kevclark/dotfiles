@@ -6,15 +6,15 @@ bastardvid="a8f8"
 
 if lsusb | grep -q "$cornvid" ; then
     echo "A beautiful Corne is attached!"
-    return 1
+    exit 1
 elif lsusb | grep -q "$skeletylvid" ; then
     echo "A bastard keeb is attached!"
-    return 1
+    exit 1
 elif lsusb | grep -q "$bastardvid" ; then
     echo "A bastard keeb is attached!"
-    return 1
+    exit 1
 else
     echo "no mech keeb here :("
-    return 0
+    exit 0
 fi
 

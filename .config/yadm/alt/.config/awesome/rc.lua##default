@@ -18,6 +18,26 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
+-- Check which disro is running
+local os_file = io.open("/etc/os-release", "r")
+local dist_family_id
+if os_file then
+  local contents = os_file:read("*a")
+  os_file:close()
+  dist_family_id = contents:match("ID_LIKE=([^%\n]+)")
+end
+
+-- Try to determine if we're running on a laptop
+local laptop_in_use
+local handle = io.popen("test -e /sys/class/power_supply/BAT0 && echo true || echo false")
+if handle then
+  local result = handle:read("*a")
+  laptop_in_use = result:find("true")
+  handle:close()
+else
+  laptop_in_use = false
+end
+
 -- Widgets
 -- for laptops
 local batteryarc_widget = require("awesome-wm-widgets.batteryarc-widget.batteryarc")
@@ -25,10 +45,20 @@ local brightness_widget = require("awesome-wm-widgets.brightness-widget.brightne
 -- pc/laptop
 local volume_widget = require('awesome-wm-widgets.volume-widget.volume')
 local logout_popup = require("awesome-wm-widgets.logout-popup-widget.logout-popup")
+local net_speed_widget = require("awesome-wm-widgets.net-speed-widget.net-speed")
+local packages_widget
+if dist_family_id:find("debian") then
+  packages_widget = require('awesome-wm-widgets.apt-widget.apt-widget')
+else
+  packages_widget = require('awesome-wm-widgets.pacman-widget.pacman')
+end
 
 -- Load Debian menu entries
 -- debian menu only available if awesomewm is installed from debian mirrors
-local debian = require("debian.menu")
+local debian
+if dist_family_id:find("debian") then
+  debian = require("debian.menu")
+end
 local has_fdo, freedesktop = pcall(require, "freedesktop")
 
 --local weather_widget = require("awesome-wm-widgets.weather-widget.weather")
@@ -121,7 +151,7 @@ else
     mymainmenu = awful.menu({
         items = {
                   menu_awesome,
-                  { "Debian", debian.menu.Debian_menu.Debian },
+                  dist_family_id:find("debian") and { "Debian", debian.menu.Debian_menu.Debian },
                   menu_terminal,
                 }
     })
@@ -304,22 +334,16 @@ awful.screen.connect_for_each_screen(function(s)
                     end
                 end
             ),
-            --weather_widget({
-            --api_key='2fd2e8102f3aa23b90ecaf6ab90c959e',
-            --coordinates = {51.995930, -2.137730},
-            --time_format_12h = true,
-            --units = 'metric',
-            --show_hourly_forecast = true,
-            --show_daily_forecast = true,
-            --}),
-            batteryarc_widget({
-            show_current_level = true,
-            arc_thickness = 1,
+            net_speed_widget(),
+            laptop_in_use and batteryarc_widget({
+              show_current_level = true, 
+              arc_thickness = 1,
             }),
-            brightness_widget{
-            type = 'icon_and_text',
-            program = 'light',
-            step = 5,
+            laptop_in_use and brightness_widget{
+              type = 'icon_and_text',
+              program = 'brightnessctl',
+              step = 5,
+              percentage = true,
             },
             cpu_widget(),
             ram_widget(),
@@ -327,10 +351,13 @@ awful.screen.connect_for_each_screen(function(s)
               card = 0
             },
             fs_widget( { mounts = { '/' } } ),
+            packages_widget(),
             mykeyboardlayout,
             wibox.widget.systray(),
             mytextclock,
-            logout_popup.widget{},
+            logout_popup.widget{
+              onlock = function () awful.spawn("loginctl lock-session") end,
+            },
             s.mylayoutbox,
         },
     }
@@ -472,14 +499,14 @@ globalkeys = gears.table.join(
         awful.util.spawn("playerctl previous", false) end),
 
     -- Lock screen
-    awful.key({ modkey, "Control"  }, "l", function () awful.spawn("gnomelock-gnome-screensaver") end,
+    awful.key({ modkey, "Control"  }, "l", function () awful.spawn("loginctl lock-session") end,
               {description = "Lock the desktop", group = "screen"}),
 
     -- Logout popup
     awful.key({ modkey }, "x",
         function()
             logout_popup.launch {
-                onlock = function () awful.spawn("gnomelock-gnome-screensaver") end
+                onlock = function () awful.spawn("loginctl lock-session") end
             }
         end,
         {description = "Show logout screen", group = "custom"}),
@@ -813,9 +840,18 @@ beautiful.notification_icon_size = 100
 awful.spawn.with_shell("changeres --preset; sleep 1")
 awful.spawn.once("nitrogen --restore")
 awful.spawn.with_shell("nm-applet")
-awful.spawn.with_shell("numlockx on")
-awful.spawn.once("gnome-screensaver &")
-awful.spawn.with_shell("xautolock -time 30 -locker gnomelock-gnome-screensaver &")
+
+-- Trigger screen suspend after 10min, lock screen 5 seconds later
+local locker
+awful.spawn.with_shell("xset s 600 5")
+if dist_family_id:find("debian") then
+  awful.spawn.once("gnome-screensaver &")
+  locker = "gnomelock-gnome-screensaver"
+else
+  locker = "betterlockscreen --off 5 -l blur"
+end
+awful.spawn.with_shell(string.format("xss-lock -n dim-screen.sh --transfer-sleep-lock -- %s &", locker))
+
 awful.spawn.once("picom -b")
 -- if Corne is not attached do not set local keymap
 awful.spawn.with_shell("keebcheck && togglekeymap wide-dh -s")

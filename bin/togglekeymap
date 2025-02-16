@@ -29,10 +29,11 @@ function colemak-angle-dh {
 
 function colemak-wide-angle-dh {
     if [[ "${country:0:2}" == 'gb' ]]; then
-        keeb_model="pc105aw-sl"
+        # keeb_model="pc105aw-sl"
+        keeb_model="pc105awide"
         keeb_layout="gb(cmk_ed_ks)"
     else
-        keeb_model="pc104aw-zqu"
+        keeb_model="pc104awide"
         keeb_layout="us(cmk_ed_us)"
     fi
     ##-> DreymaR's SetXKB.sh: Activate layout
