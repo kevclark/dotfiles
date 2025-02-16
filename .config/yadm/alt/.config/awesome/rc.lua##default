@@ -47,9 +47,7 @@ local volume_widget = require('awesome-wm-widgets.volume-widget.volume')
 local logout_popup = require("awesome-wm-widgets.logout-popup-widget.logout-popup")
 local net_speed_widget = require("awesome-wm-widgets.net-speed-widget.net-speed")
 local packages_widget
-if dist_family_id:find("debian") then
-  packages_widget = require('awesome-wm-widgets.apt-widget.apt-widget')
-else
+if dist_family_id:find("arch") then
   packages_widget = require('awesome-wm-widgets.pacman-widget.pacman')
 end
 
@@ -351,7 +349,7 @@ awful.screen.connect_for_each_screen(function(s)
               card = 0
             },
             fs_widget( { mounts = { '/' } } ),
-            packages_widget(),
+            dist_family_id:find("arch") and packages_widget(),
             mykeyboardlayout,
             wibox.widget.systray(),
             mytextclock,
