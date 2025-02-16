@@ -3,9 +3,13 @@
 A place to store your dotfiles and move them around different machines.
 
 # Setup
+Now using yadm to manage the dots.
 
 ```
-curl https://raw.githubusercontent.com/kevclark/dotfiles/master/.dotfiles-scripts/makehome.py | python3
+sudo apt install yadm
+yadm clone git@github.com:kevclark/dotfiles.git
+yadm config local.class Home
+yadm alt
 ```
 
 ## Stuff to apt install
