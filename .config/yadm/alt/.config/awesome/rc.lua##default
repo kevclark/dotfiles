@@ -846,7 +846,7 @@ if dist_family_id:find("debian") then
   awful.spawn.once("gnome-screensaver &")
   locker = "gnomelock-gnome-screensaver"
 else
-  locker = "betterlockscreen --off 5 -l blur"
+  locker = "betterlockscreen --off 5 -l dimblur"
 end
 awful.spawn.with_shell(string.format("xss-lock -n dim-screen.sh --transfer-sleep-lock -- %s &", locker))
 
