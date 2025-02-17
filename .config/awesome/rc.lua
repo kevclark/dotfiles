@@ -510,13 +510,13 @@ globalkeys = gears.table.join(
         {description = "Show logout screen", group = "custom"}),
 
     -- Toggle keyboard layout between colemak and qwerty
-    awful.key({ modkey  }, "F12", function () awful.spawn("togglekeymap dh") end,
+    awful.key({ modkey  }, "F12", function () awful.spawn.with_shell("togglekeymap dh") end,
               {description = "Toggle colemak-dh keyboard", group = "custom"}),
 
-    awful.key({ modkey, "Control" }, "F12", function () awful.spawn("togglekeymap wide-dh") end,
+    awful.key({ modkey, "Control" }, "F12", function () awful.spawn.with_shell("togglekeymap wide-dh") end,
               {description = "Toggle colemak-wide-dh keyboard", group = "custom"}),
 
-    awful.key({ modkey, "Shift"}, "F12", function () awful.spawn("togglekeymap") end,
+    awful.key({ modkey, "Shift"}, "F12", function () awful.spawn.with_shell("togglekeymap") end,
               {description = "Toggle colemak (vanilla) keyboard", group = "custom"}),
 
     -- Applications
