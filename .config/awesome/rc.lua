@@ -27,6 +27,12 @@ if os_file then
   dist_family_id = contents:match("ID_LIKE=([^%\n]+)")
 end
 
+if dist_family_id:find("arch") then
+  wallpaper = "waypaper"
+else
+  wallpaper = "nitrogen"
+end
+
 -- Try to determine if we're running on a laptop
 local laptop_in_use
 local handle = io.popen("test -e /sys/class/power_supply/BAT0 && echo true || echo false")
@@ -477,6 +483,18 @@ globalkeys = gears.table.join(
     awful.key({ modkey }, "d", function() awful.spawn.with_shell("$HOME/.config/rofi/scripts/launcher_t3") end,
               {description = "show rofi", group = "launcher"}),
 
+    awful.key({ modkey, "Shift" }, "w", function() awful.spawn(wallpaper .. " --random") end,
+              {description = "set random wallpaper", group = "screen"}),
+
+    awful.key({ modkey, "Shift" }, "e", function() awful.spawn("rofimoji -a clipboard -s neutral --selector-args='-theme ~/.config/rofi/launchers/type-3/style-5.rasi'") end,
+              {description = "show emoji picker", group = "launcher"}),
+
+    awful.key({ modkey, "Shift" }, "p", function() awful.spawn.with_shell(terminal .. " start --class btop btop") end,
+              {description = "Open btop", group = "launcher"}),
+
+    awful.key({ modkey }, "c", function() awful.spawn.with_shell(terminal .. " start --class clipse clipse") end,
+              {description = "Open Clipboard Manager", group = "launcher"}),
+
     -- Brightness keys
     awful.key({}, "XF86MonBrightnessUp", function () brightness_widget:inc() end),
     awful.key({}, "XF86MonBrightnessDown", function () brightness_widget:dec() end),
@@ -757,7 +775,30 @@ awful.rules.rules = {
     { rule_any = {type = { "normal", "dialog" }
       }, properties = { titlebars_enabled = false }
     },
-
+    {
+      -- make any window float that has WM_WINDOW_ROLE set to About
+      rule = { role = "About" },
+      properties = { floating = true },
+    },
+    {
+      -- Make the btop instance float in the centre of the screen
+      rule = { class = "btop" },
+      properties = {
+          floating = true,
+          geometry = { width = 1200, height = 600 },
+      },
+      callback = function(c)
+          awful.placement.centered(c)
+      end,
+    },
+    {
+      -- Make the clipse instance float in the centre of the screen
+      rule = { class = "clipse" },
+      properties = {
+          floating = true,
+          placement = awful.placement.centered,
+      },
+    },
     -- Set Firefox to always map on the tag named "2" on screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { screen = 1, tag = "2" } },
@@ -836,8 +877,9 @@ beautiful.notification_icon_size = 100
 
 -- Autostart
 awful.spawn.with_shell("changeres --preset; sleep 1")
-awful.spawn.once("nitrogen --restore")
+awful.spawn.once(wallpaper .. " --restore")
 awful.spawn.with_shell("nm-applet")
+awful.spawn.once("clipse --listen")
 
 -- Trigger screen suspend after 10min, lock screen 5 seconds later
 local locker
