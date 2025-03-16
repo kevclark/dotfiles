@@ -492,8 +492,11 @@ globalkeys = gears.table.join(
     awful.key({ modkey, "Shift" }, "p", function() awful.spawn.with_shell(terminal .. " start --class btop btop") end,
               {description = "Open btop", group = "launcher"}),
 
-    awful.key({ modkey }, "c", function() awful.spawn.with_shell(terminal .. " start --class clipse clipse") end,
-              {description = "Open Clipboard Manager", group = "launcher"}),
+    awful.key({ modkey }, "c", function() awful.spawn("clipcat-menu insert") end,
+              {description = "Open Clipboard Manager (insert)", group = "launcher"}),
+
+    awful.key({ modkey, "Control" }, "c", function() awful.spawn("clipcat-menu remove") end,
+              {description = "Open Clipboard Manager (remove)", group = "launcher"}),
 
     -- Brightness keys
     awful.key({}, "XF86MonBrightnessUp", function () brightness_widget:inc() end),
@@ -791,14 +794,6 @@ awful.rules.rules = {
           awful.placement.centered(c)
       end,
     },
-    {
-      -- Make the clipse instance float in the centre of the screen
-      rule = { class = "clipse" },
-      properties = {
-          floating = true,
-          placement = awful.placement.centered,
-      },
-    },
     -- Set Firefox to always map on the tag named "2" on screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { screen = 1, tag = "2" } },
@@ -879,7 +874,7 @@ beautiful.notification_icon_size = 100
 awful.spawn.with_shell("changeres --preset; sleep 1")
 awful.spawn.once(wallpaper .. " --restore")
 awful.spawn.with_shell("nm-applet")
-awful.spawn.once("clipse --listen")
+awful.spawn.once("clipcatd")
 
 -- Trigger screen suspend after 10min, lock screen 5 seconds later
 local locker
