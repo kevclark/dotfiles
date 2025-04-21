@@ -10,7 +10,7 @@ config = {
   -- color_scheme = 'Dracula',
   -- color_scheme = 'Bright Lights',
   -- workaround Hyprland bug in < 0.41
-  enable_wayland = false,
+  enable_wayland = true,
   warn_about_missing_glyphs = false,
   leader = { key = 'Space', mods = 'CTRL', timeout_milliseconds = 2000 },
   keys = {
