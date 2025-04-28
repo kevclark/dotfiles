@@ -462,15 +462,14 @@ binds {
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return { spawn "wezterm"; }
-    Mod+D hotkey-overlay-title="rofi" { spawn "sh" "-c" "rofi -show drun -theme ~/.config/rofi/launchers/type-3/style-5.rasi"; }
+    Mod+D hotkey-overlay-title="Launcher" { spawn "walker"; }
     // Ctrl+Alt+L { spawn "betterscreenlock"; }
     Ctrl+Alt+L { spawn "gtklock"; }
     Mod+B { spawn "zen-browser"; }
-    Mod+C hotkey-overlay-title="Clipboard Manager (insert)" { spawn "clipcat-menu" "insert"; }
-    Mod+Ctrl+C hotkey-overlay-title="Clipboard Manager (remove)" { spawn "clipcat-menu" "remove"; }
+    Mod+C hotkey-overlay-title="Clipboard" { spawn "walker" "-m" "clipboard"; }
+    Mod+Shift+E hotkey-overlay-title="Emojis" { spawn "walker" "-m" "emojis"; }
     Mod+Shift+W hotkey-overlay-title="Set random wallpaper" { spawn "waypaper" "--random"; }
     Mod+X { spawn "wlogout"; }
-    Mod+Shift+D { spawn "walker"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.
