@@ -263,7 +263,7 @@ layout {
 
 // Overview feature not yet in a release
 overview {
-    zoom 0.3
+    zoom 0.5
 }
 
 // Add lines like this to spawn processes at startup.
@@ -274,8 +274,9 @@ overview {
 spawn-at-startup "clipcatd"
 spawn-at-startup "swaync"
 spawn-at-startup "swww-daemon"
-spawn-at-startup "waypaper --restore"
+spawn-at-startup "waypaper" "--restore"
 spawn-at-startup "waybar"
+spawn-at-startup "walker" "--gapplication-service"
 // Lock session after 15min of no activity
 // Blank screen 10s before this as an early warning session is about to lock
 // If locker is running and no password is entered within 10s, blank screen
@@ -286,6 +287,14 @@ spawn-at-startup "swayidle" "-w" "timeout" "890" "niri msg action power-off-moni
                     "timeout" "10" "if pgrep -x gtklock; then niri msg action power-off-monitors; fi" \
                     "lock" "gtklock -d" \
                     "before-sleep" "gtklock -d";
+// This one is mainly to be able to run bcompare
+spawn-at-startup "xwayland-satellite"
+
+environment {
+    DISPLAY ":0"
+    // To launch apps based on electron ( > v28)
+    ELECTRON_OZONE_PLATFORM_HINT "auto"
+}
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 // If the client will specifically ask for CSD, the request will be honored.
@@ -419,10 +428,21 @@ window-rule {
 }
 
 window-rule {
-    // Doesn't quite work! Try to block out the Gmail tab.
     match app-id="zen" title="^About"
 
     open-floating true
+}
+
+window-rule {
+    // Attempt to open unfocused messages as floating
+    match app-id="com.viber.Viber" title="^ViberPC"
+
+    open-floating true
+}
+
+window-rule {
+    match app-id="zen"
+    open-maximized true
 }
 
 binds {
@@ -450,6 +470,7 @@ binds {
     Mod+Ctrl+C hotkey-overlay-title="Clipboard Manager (remove)" { spawn "clipcat-menu" "remove"; }
     Mod+Shift+W hotkey-overlay-title="Set random wallpaper" { spawn "waypaper" "--random"; }
     Mod+X { spawn "wlogout"; }
+    Mod+Shift+D { spawn "walker"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.
@@ -605,7 +626,10 @@ binds {
     // Switches focus between the current and the previous workspace.
     Mod+Tab { focus-workspace-previous; }
     Alt+Tab { focus-window-previous; }
-    Mod+Alt+Tab { toggle-overview; }
+    // Open/close the Overview: a zoomed-out view of workspaces and windows.
+    // You can also move the mouse into the top-left hot corner,
+    // or do a four-finger swipe up on a touchpad.
+    Mod+O { toggle-overview; }
 
     // The following binds move the focused window in and out of a column.
     // If the window is alone, they will consume it into the nearby column to the side.
