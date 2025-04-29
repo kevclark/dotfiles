@@ -283,10 +283,10 @@ spawn-at-startup "walker" "--gapplication-service"
 // The lock event will subscribe to the "loginctl lock-session"
 // The before-sleep event will ensure the locker is run before suspending
 spawn-at-startup "swayidle" "-w" "timeout" "890" "niri msg action power-off-monitors" \
-                    "timeout" "900" "gtklock -d" \
+                    "timeout" "900" "locker.sh" \
                     "timeout" "10" "if pgrep -x gtklock; then niri msg action power-off-monitors; fi" \
-                    "lock" "gtklock -d" \
-                    "before-sleep" "gtklock -d";
+                    "lock" "locker.sh" \
+                    "before-sleep" "locker.sh";
 // This one is mainly to be able to run bcompare
 spawn-at-startup "xwayland-satellite"
 
