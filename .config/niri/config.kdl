@@ -271,7 +271,6 @@ overview {
 // which may be more convenient to use.
 // See the binds section below for more spawn examples.
 // spawn-at-startup "alacritty" "-e" "fish"
-spawn-at-startup "clipcatd"
 spawn-at-startup "swaync"
 spawn-at-startup "swww-daemon"
 spawn-at-startup "waypaper" "--restore"
