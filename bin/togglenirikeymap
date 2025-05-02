@@ -1,0 +1,33 @@
+#!/bin/bash
+
+case $1 in
+    -s) notoggle=1 && echo "Not toggling - setting keymap only" ;;
+     *) notoggle=0 ;;
+esac
+
+function set-standard {
+    # Apply standard keyboard layout
+    # Comment out Colemak setting
+    sed -E -i '/^\s*layout "gb\(cmk_ed_ks\)"/s;^(\s*)layout "gb\(cmk_ed_ks\)";\1// layout "gb(cmk_ed_ks)";' ~/.config/niri/config.kdl
+    # Uncomment the standard keyboard
+    sed -E -i '/^\s*\/\/ layout "gb"/s;^(\s*)\/\/ layout "gb";\1layout "gb";' ~/.config/niri/config.kdl
+}
+
+function set-colemak {
+    # Apply Colemak keyboard layout
+    # Comment out standard keyboard
+    sed -E -i '/^\s*layout "gb"/s;^(\s*)layout "gb";\1// layout "gb";' ~/.config/niri/config.kdl
+    # Uncomment the Colemak setting
+    sed -E -i '/^\s*\/\/ layout "gb\(cmk_ed_ks\)"/s;^(\s*)\/\/ layout "gb\(cmk_ed_ks\)";\1layout "gb(cmk_ed_ks)";' ~/.config/niri/config.kdl
+}
+
+# Main
+if niri msg keyboard-layouts | grep -q 'Colemak' && [ $notoggle == 0 ]; then
+    # Toggle to qwerty
+    echo "You're running colemak, switching to qwerty"
+    set-standard
+else
+    # Toggle to colemak
+    echo "Switching to colemak"
+    set-colemak
+fi

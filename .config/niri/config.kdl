@@ -9,9 +9,8 @@
 input {
     keyboard {
         xkb {
-            model "pc105awide"
-            layout "gb(cmk_ed_ks)"
-            options "misc:extend,lv5:caps_switch_lock,grp:shifts_toggle,compose:menu,misc:cmk_curl_dh"
+            layout "gb"
+            // layout "gb(cmk_ed_ks)"; model "pc105awide"; options "misc:extend,lv5:caps_switch_lock,grp:shifts_toggle,compose:menu,misc:cmk_curl_dh";
         }
     }
 
@@ -289,6 +288,10 @@ spawn-at-startup "swayidle" "-w" "timeout" "890" "niri msg action power-off-moni
 // This one is mainly to be able to run bcompare
 spawn-at-startup "xwayland-satellite"
 
+// If there is no external keyboard attached (which is preconfigured with Colemax),
+// set the primary keyboard layout to Colemax
+spawn-at-startup "nirikeebset"
+
 environment {
     DISPLAY ":0"
     // To launch apps based on electron ( > v28)
@@ -469,6 +472,8 @@ binds {
     Mod+Shift+E hotkey-overlay-title="Emojis" { spawn "walker" "-m" "emojis"; }
     Mod+Shift+W hotkey-overlay-title="Set random wallpaper" { spawn "waypaper" "--random"; }
     Mod+X { spawn "wlogout"; }
+    // Toggle between standard gb and Colemak layout
+    Mod+F12 { spawn "togglenirikeymap"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.
