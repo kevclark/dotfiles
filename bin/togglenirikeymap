@@ -5,6 +5,12 @@ case $1 in
      *) notoggle=0 ;;
 esac
 
+if [ -z $2 ]; then
+    mod="gb"
+else
+    mod="$2"
+fi
+
 function set-standard {
     # Apply standard keyboard layout
     # Comment out Colemak setting
@@ -22,12 +28,23 @@ function set-colemak {
 }
 
 # Main
-if niri msg keyboard-layouts | grep -q 'Colemak' && [ $notoggle == 0 ]; then
+if [ $notoggle == 1 ]; then
+    # Set supplied layout
+    if [[ "$mod" == "gb" ]]; then
+        # Switch to qwerty
+        echo "Switching to qwerty"
+        set-standard
+    else
+        # Switch to colemak
+        echo "Switching to colemak"
+        set-colemak
+    fi
+elif [[ $(niri msg keyboard-layouts) =~ "Colemak" ]]; then
     # Toggle to qwerty
     echo "You're running colemak, switching to qwerty"
     set-standard
 else
     # Toggle to colemak
-    echo "Switching to colemak"
+    echo "You're running qwerty, switching to colemak"
     set-colemak
 fi

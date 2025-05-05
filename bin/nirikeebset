@@ -1,2 +1,6 @@
 #!/usr/bin/env bash
-keebcheck && togglenirikeymap -s
+if keebcheck; then
+    togglenirikeymap -s colemak
+else
+    togglenirikeymap -s gb
+fi
