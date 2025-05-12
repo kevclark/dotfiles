@@ -2,17 +2,53 @@
    "niri/workspaces": {
       "format": "{icon}",
       "format-icons": {
+        // Named workspaces
+        // (you need to configure them in niri)
          "browser": "󰈹",
          "chat": "",
          "code": "",
          "create": "",
-         "music": ""
-      }
+         "urgent": "",
+      },
+   },
+
+   "niri/language": {
+      "format": "{short} {variant}"
    },
 
    "clock": {
-      "format": "{:%Y-%m-%d %H:%M}"  
-   },   
+        "format": "{:%H:%M}  ",
+        "format-alt": "{:L%A, %B %d, %Y (%R)}  ",
+        "tooltip-format": "\n<span size='11pt' font='Adwaita Mono'>{calendar}</span>",
+        "calendar": {
+                    "mode"          : "year",
+                    "mode-mon-col"  : 3,
+                    "weeks-pos"     : "right",
+                    "on-scroll"     : 1,
+                    "format": {
+                              "months":     "<span color='#ffead3'><b>{}</b></span>",
+                              "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                              "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+                              "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                              "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+                              }
+                    },
+        "actions":  {
+                    "on-click-right": "mode",
+                    "on-click-forward": "tz_up",
+                    "on-click-backward": "tz_down",
+                    // "on-scroll-up": "shift_up",
+                    // "on-scroll-down": "shift_down"
+                    }
+    },
+
+   // ideally not display this if there is nothing in /sys/class/backlight/
+   "backlight": {
+    "device": "intel_backlight",
+    "format": "{percent}% {icon}",
+    "format-icons": [" ","󰃜 ", "󰃛 ", " "],
+    "tooltip": false
+   },
 
    "battery": {
       "full-at": 96,
@@ -27,24 +63,44 @@
       "format-plugged": " {capacity}%",
       "format-time": "{H}h {M}m",
       "format-icons": [ "󰁺","󰁻", "󰁼", "󰁽", "󰁾","󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
-      "tooltip": false
+      "tooltip": true
+   },
+
+   "cpu": {
+     "interval": 2,
+     "format": "{usage}% {icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}{icon7}",
+     "format-icons": [
+          "<span color='#69ff94'>▁</span>", // green
+          "<span color='#2aa9ff'>▂</span>", // blue
+          "<span color='#f8f8f2'>▃</span>", // white
+          "<span color='#f8f8f2'>▄</span>", // white
+          "<span color='#ffffa5'>▅</span>", // yellow
+          "<span color='#ffffa5'>▆</span>", // yellow
+          "<span color='#ff9977'>▇</span>", // orange
+          "<span color='#dd532e'>█</span>"  // red
+     ]
    },
 
    "network": {
-      "format-wifi": "󰤨",
-      "format-ethernet": "󰈀",
-      "format-disconnected": "󰤭",
-      "tooltip": false
+      "interval": 2,
+      "format-wifi": "{essid} {ipaddr}",
+      "format-ethernet": "{ipaddr}",
+      "format-disconnected": "󰌙",
+      "tooltip-format": "  {bandwidthDownBits}   {bandwidthUpBits}",
+      "tooltip": true
    },
 
    "pulseaudio": {
-      "format": "{icon} {volume}%",
+      "reverse-scrolling": 1,
+      "format": "{volume}% {icon}",
       "format-muted": "",
       "format-icons": {
          "headphones": "",
          "headset": "",
          "default": ["","",""]
       },
+      "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+      "on-click-right": "pavucontrol",
       "tooltip": false
    },
 
@@ -55,7 +111,7 @@
       "modules": [
          {
          "type": "screenshare",
-         "tooltip": false,
+         "tooltip": true,
          "tooltip-icon-size": 15
          },
          // {
@@ -65,7 +121,7 @@
          // },
          {
          "type": "audio-in",
-         "tooltip": false,
+         "tooltip": true,
          "tooltip-icon-size": 15
          }
       ]
@@ -73,21 +129,21 @@
 
    "tray": {
       "icon-size": 15,
-      "spacing": 8
+      "spacing": 10
    },
 
    "idle_inhibitor": {
        "format": "{icon}",
        "format-icons": {
-           "activated": "",
-           "deactivated": ""
+           "activated": "",
+           "deactivated": ""
        },
       "tooltip": false
    },
 
    "power-profiles-daemon": {
       "format": "{icon}",
-      "tooltip": false,
+      "tooltip": true,
       "format-icons": {
           "default": "󰓅",
           "performance": "󰓅",

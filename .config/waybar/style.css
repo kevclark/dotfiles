@@ -51,8 +51,15 @@ window#waybar {
    border-radius: 0px;
 }
 
+#language {
+    border-radius: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
 #battery,
 #clock,
+#cpu,
 #custom-notifications,
 #custom-updates,
 #idle_inhibitor,

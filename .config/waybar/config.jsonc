@@ -11,20 +11,24 @@
       "$HOME/.config/waybar/modules.jsonc"
    ],
    "modules-left": [
-      "niri/workspaces"
+      "niri/workspaces",
+      "niri/language",
+      "custom/updates",
    ],
    "modules-center": [
       "clock"
    ],
    "modules-right": [
+      "cpu",
+      "network",
       "tray",
-      // "privacy",
+      "backlight",
       "custom/separator",
-      "custom/updates",
       "idle_inhibitor",
       "custom/notifications",
       "custom/separator",
       "pulseaudio",
+      "privacy",
       "custom/separator",
       "power-profiles-daemon", // via tuned and tuned-ppd
       "battery"
