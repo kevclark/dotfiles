@@ -19,9 +19,9 @@
    "clock": {
         "format": "{:%H:%M}  ",
         "format-alt": "{:L%A, %B %d, %Y (%R)}  ",
-        "tooltip-format": "\n<span size='11pt' font='Adwaita Mono'>{calendar}</span>",
+        "tooltip-format": "\n<span size='10pt' font='Adwaita Mono'>{calendar}</span>",
         "calendar": {
-                    "mode"          : "year",
+                    "mode"          : "month",
                     "mode-mon-col"  : 3,
                     "weeks-pos"     : "right",
                     "on-scroll"     : 1,
@@ -93,7 +93,7 @@
    "pulseaudio": {
       "reverse-scrolling": 1,
       "format": "{volume}% {icon}",
-      "format-muted": "",
+      "format-muted": "󰖁 ",
       "format-icons": {
          "headphones": "",
          "headset": "",
@@ -138,7 +138,8 @@
            "activated": "",
            "deactivated": ""
        },
-      "tooltip": false
+      "tooltip-format-activated": "Screen idle inhibited",
+      "tooltip-format-deactivated": "Screen idle enabled"
    },
 
    "power-profiles-daemon": {
@@ -180,15 +181,28 @@
       "tooltip": false
    },
 
-    "custom/updates": {
+    "custom/updates-pacman": {
         "format": "{} {icon}",
         "return-type": "json",
         "format-icons": {
             "has-updates": "󱍷",
             "updated": ""
         },
-        "exec-if": "which waybar-module-pacman-updates",
+        "exec-if": "test -f /usr/bin/waybar-module-pacman-updates",
         "exec": "waybar-module-pacman-updates --no-zero-output --network-interval-seconds 300"
+    },
+
+    "custom/updates-apt": {
+        "exec": "checkupdates",
+        "exec-if": "test -f /usr/bin/apt-get",
+        "on-click": "checkupdates",
+        "interval": 3600, // refresh every 60 minutes
+        "return-type": "json",
+        "format": "{} {icon}",
+        "format-icons": {
+            "has-updates": "",
+            "updated": ""
+        }
     }
 }
 

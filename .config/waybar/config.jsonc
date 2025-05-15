@@ -13,7 +13,8 @@
    "modules-left": [
       "niri/workspaces",
       "niri/language",
-      "custom/updates",
+      "custom/updates-pacman",
+      "custom/updates-apt"
    ],
    "modules-center": [
       "clock"

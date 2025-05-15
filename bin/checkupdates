@@ -1,0 +1,15 @@
+#!/bin/bash 
+
+updates="$(apt-get -q -y --ignore-hold --allow-change-held-packages --allow-unauthenticated -s dist-upgrade | rg -oP 'Inst \K[^ ]+')"
+numupdates="$(echo "$updates" | wc -w)"
+# Replace newlines with \r for formatting on waybar
+updates=${updates//$'\n'/\\r}
+
+alt="has-updates"
+if [ $numupdates -eq 0 ]; then
+    alt="updated"
+    numupdates=""
+    updates="No updates pending"
+fi
+
+echo "{ \"text\": \"$numupdates\", \"alt\": \"$alt\", \"tooltip\": \"$updates\" }"

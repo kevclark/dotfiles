@@ -5,9 +5,9 @@
 @import url("../themes/colors-waybar.css");
 
 *{
-   font-size: 15px;
-   font-family: Adwaita Mono;
-   font-weight: 600;
+   font-size: 16px;
+   font-family: Font Awesome;
+   font-weight: 400;
    min-height: 0;
    padding-top: 0px;
    padding-bottom: 0px;
