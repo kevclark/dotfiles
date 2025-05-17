@@ -185,7 +185,7 @@
         "format": "{} {icon}",
         "return-type": "json",
         "format-icons": {
-            "has-updates": "󱍷",
+            "has-updates": "󱍷 ",
             "updated": ""
         },
         "exec-if": "test -f /usr/bin/waybar-module-pacman-updates",
@@ -193,15 +193,15 @@
     },
 
     "custom/updates-apt": {
-        "exec": "checkupdates",
+        "exec": "checkupdates-apt",
         "exec-if": "test -f /usr/bin/apt-get",
-        "on-click": "checkupdates",
+        "on-click": "checkupdates-apt",
         "interval": 3600, // refresh every 60 minutes
         "return-type": "json",
         "format": "{} {icon}",
         "format-icons": {
-            "has-updates": "",
-            "updated": ""
+            "has-updates": " ",
+            "updated": " "
         }
     }
 }
