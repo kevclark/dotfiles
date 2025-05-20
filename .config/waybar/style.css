@@ -18,6 +18,11 @@ window#waybar {
    color: @fg_color;
 }
 
+#window {
+   background: @bg_color;
+   color: @middle_color;
+}
+
 #workspaces button {
    background: @bg_color;
    color: @fg_color;

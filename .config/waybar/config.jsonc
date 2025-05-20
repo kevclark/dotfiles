@@ -14,25 +14,20 @@
       "niri/workspaces",
       "niri/language",
       "custom/updates-pacman",
-      "custom/updates-apt"
+      "custom/updates-apt",
+      "niri/window"
    ],
    "modules-center": [
-      "clock"
    ],
    "modules-right": [
       "cpu",
       "network",
-      "tray",
-      "backlight",
-      "custom/separator",
-      "idle_inhibitor",
       "custom/notifications",
-      "custom/separator",
-      "pulseaudio",
       "privacy",
-      "custom/separator",
-      "power-profiles-daemon", // via tuned and tuned-ppd
-      "battery"
+      "tray",
+      "battery",
+      "clock",
+      "group/group-power"
    ]
 }
 ]
