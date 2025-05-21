@@ -132,7 +132,6 @@ layout {
     default-column-width { proportion 0.5; }
     // If you leave the brackets empty, the windows themselves will decide their initial width.
     // default-column-width {}
-    default-column-display "tabbed"
 
      tab-indicator {
         // off
@@ -176,6 +175,9 @@ layout {
 
         // Color of the ring on inactive monitors.
         inactive-color "#505050"
+
+        // Color of the border around windows that request your attention.
+        urgent-color "#9b0000"
 
         // You can also use gradients. They take precedence over solid colors.
         // Gradients are rendered the same as CSS linear-gradient(angle, from, to).
