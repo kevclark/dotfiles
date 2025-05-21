@@ -471,7 +471,7 @@ binds {
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return { spawn "wezterm"; }
     Mod+D hotkey-overlay-title="Launcher" { spawn "walker"; }
-    // Ctrl+Alt+L { spawn "betterscreenlock"; }
+    Mod+E { spawn "thunar"; }
     Ctrl+Alt+L { spawn "gtklock"; }
     Mod+B { spawn "zen-browser"; }
     Mod+C hotkey-overlay-title="Clipboard" { spawn "walker" "-m" "clipboard"; }
