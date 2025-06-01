@@ -202,7 +202,7 @@
             "updated": ""
         },
         "exec-if": "test -f /usr/bin/waybar-module-pacman-updates",
-        "exec": "waybar-module-pacman-updates --no-zero-output --network-interval-seconds 300"
+        "exec": "waybar-module-pacman-updates --no-zero-output --tooltip-align-columns --color-semver-updates --network-interval-seconds 300"
     },
 
     "custom/updates-apt": {
