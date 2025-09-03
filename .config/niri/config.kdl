@@ -62,6 +62,10 @@ input {
 // Find more information on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
 // Remember to uncomment the node by removing "/-"!
+// laptop niri msg output:
+// Output "LG Display 0x059D Unknown" (eDP-1)
+// Match can use "LG Display 0x059D Unknown" or "eDP-1"
+// eDP-1 (auto position selected 0,0)
 output "eDP-1" {
     // Uncomment this line to disable this output.
     // off
@@ -281,6 +285,7 @@ spawn-at-startup "swww-daemon"
 spawn-at-startup "waypaper" "--restore"
 spawn-at-startup "waybar"
 spawn-at-startup "walker" "--gapplication-service"
+spawn-at-startup "delay_kopia_start.sh"
 // Lock session after 15min of no activity
 // Blank screen 10s before this as an early warning session is about to lock
 // If locker is running and no password is entered within 10s, blank screen
@@ -291,15 +296,12 @@ spawn-at-startup "swayidle" "-w" "timeout" "890" "niri msg action power-off-moni
                     "timeout" "10" "if pgrep -x gtklock; then niri msg action power-off-monitors; fi" \
                     "lock" "locker.sh" \
                     "before-sleep" "locker.sh";
-// This one is mainly to be able to run bcompare
-spawn-at-startup "xwayland-satellite"
 
 // If there is no external keyboard attached (which is preconfigured with Colemax),
 // set the primary keyboard layout to Colemax
 spawn-at-startup "nirikeebset"
 
 environment {
-    DISPLAY ":0"
     // To launch apps based on electron ( > v28)
     ELECTRON_OZONE_PLATFORM_HINT "auto"
 }
@@ -392,13 +394,15 @@ animations {
 //     default-column-width {}
 // }
 
-// Open the Firefox picture-in-picture player as floating by default.
+// Open the Zen-browser picture-in-picture player as floating by default.
 window-rule {
     // This app-id regular expression will work for both:
-    // - host Firefox (app-id is "firefox")
-    // - Flatpak Firefox (app-id is "org.mozilla.firefox")
-    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    // - host Zen-browser (app-id is "zen")
+    match app-id=r#"zen$"# title="^Picture-in-Picture$"
     open-floating true
+    default-column-width { fixed 720; }
+    default-window-height { fixed 405; }
+    default-floating-position x=8 y=8 relative-to="bottom-right"
 }
 
 // Example: block out two password managers from screen capture.
@@ -442,14 +446,33 @@ window-rule {
 }
 
 window-rule {
-    // Attempt to open unfocused messages as floating
+    // Open unfocused messages as floating
     match app-id="com.viber.Viber" title="^ViberPC"
+
+    open-floating true
+    open-focused false
+    default-floating-position x=32 y=32 relative-to="top-right"
+    draw-border-with-background false
+}
+
+window-rule {
+    match app-id="thunar" title="^File Operation"
 
     open-floating true
 }
 
 window-rule {
     match app-id="zen"
+    open-maximized true
+}
+
+window-rule {
+    match app-id="waypaper"
+    open-floating true
+}
+
+window-rule {
+    match app-id="Microsoft-edge" title="^Outlook"
     open-maximized true
 }
 
