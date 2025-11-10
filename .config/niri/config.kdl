@@ -62,40 +62,7 @@ input {
 // Find more information on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
 // Remember to uncomment the node by removing "/-"!
-// laptop niri msg output:
-// Output "LG Display 0x059D Unknown" (eDP-1)
-// Match can use "LG Display 0x059D Unknown" or "eDP-1"
-// eDP-1 (auto position selected 0,0)
-output "eDP-1" {
-    // Uncomment this line to disable this output.
-    // off
-
-    // Resolution and, optionally, refresh rate of the output.
-    // The format is "<width>x<height>" or "<width>x<height>@<refresh rate>".
-    // If the refresh rate is omitted, niri will pick the highest refresh rate
-    // for the resolution.
-    // If the mode is omitted altogether or is invalid, niri will pick one automatically.
-    // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
-    mode "1920x1080@60.020"
-
-    // You can use integer or fractional scale, for example use 1.5 for 150% scale.
-    scale 1
-
-    // Transform allows to rotate the output counter-clockwise, valid values are:
-    // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
-    transform "normal"
-
-    // Position of the output in the global coordinate space.
-    // This affects directional monitor actions like "focus-monitor-left", and cursor movement.
-    // The cursor can only move between directly adjacent outputs.
-    // Output scale and rotation has to be taken into account for positioning:
-    // outputs are sized in logical, or scaled, pixels.
-    // For example, a 3840×2160 output with scale 2.0 will have a logical size of 1920×1080,
-    // so to put another output directly adjacent to it on the right, set its x to 1920.
-    // If the position is unset or results in an overlap, the output is instead placed
-    // automatically.
-    // position x=1280 y=0
-}
+include "primary-output.kdl"
 
 cursor {
     hide-when-typing
@@ -279,13 +246,7 @@ overview {
 // Note that running niri as a session supports xdg-desktop-autostart,
 // which may be more convenient to use.
 // See the binds section below for more spawn examples.
-// spawn-at-startup "alacritty" "-e" "fish"
-spawn-at-startup "swaync"
-spawn-at-startup "swww-daemon"
-spawn-at-startup "waypaper" "--restore"
-spawn-at-startup "waybar"
-spawn-at-startup "walker" "--gapplication-service"
-spawn-at-startup "delay_kopia_start.sh"
+include "spawn-at-startup.kdl"
 // Lock session after 15min of no activity
 // Blank screen 10s before this as an early warning session is about to lock
 // If locker is running and no password is entered within 10s, blank screen
@@ -467,6 +428,24 @@ window-rule {
 }
 
 window-rule {
+    match app-id="eu.betterbird.Betterbird" title="^Write:"
+    open-floating true
+    default-column-width { fixed 1028; }
+    default-window-height { fixed 890; }
+    default-floating-position x=64 y=64 relative-to="bottom-right"
+}
+
+window-rule {
+    match app-id="eu.betterbird.Betterbird"
+    open-maximized true
+}
+
+window-rule {
+    match app-id="Proton Mail"
+    open-maximized true
+}
+
+window-rule {
     match app-id="waypaper"
     open-floating true
 }
@@ -475,6 +454,18 @@ window-rule {
     match app-id="Microsoft-edge" title="^Outlook"
     open-maximized true
 }
+
+debug {
+  honor-xdg-activation-with-invalid-serial
+}
+
+window-rule {
+    geometry-corner-radius 20
+    clip-to-geometry true
+}
+
+include "overview-layer.kdl"
+include "binds.kdl"
 
 binds {
     // Keys consist of modifiers separated by + signs, followed by an XKB key name
@@ -493,15 +484,9 @@ binds {
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return { spawn "wezterm"; }
-    Mod+D hotkey-overlay-title="Launcher" { spawn "walker"; }
     Mod+E { spawn "thunar"; }
     Ctrl+Alt+L { spawn "gtklock"; }
     Mod+B { spawn "zen-browser"; }
-    Mod+C hotkey-overlay-title="Clipboard" { spawn "walker" "-m" "clipboard"; }
-    Mod+Shift+E hotkey-overlay-title="Emojis" { spawn "walker" "-m" "emojis"; }
-    Mod+Shift+W hotkey-overlay-title="Set random wallpaper" { spawn "waypaper" "--random"; }
-    Mod+X { spawn "wlogout"; }
-    // Toggle between standard gb and Colemak layout
     Mod+F12 { spawn "togglenirikeymap"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.

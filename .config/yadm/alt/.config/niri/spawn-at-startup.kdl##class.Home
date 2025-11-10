@@ -1,0 +1,2 @@
+spawn-sh-at-startup "qs -c noctalia-shell"
+spawn-at-startup "delay_kopia_start.sh"
