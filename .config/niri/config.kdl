@@ -280,6 +280,31 @@ hotkey-overlay {
    skip-at-startup
 }
 
+// Recent windows switcher Alt
+recent-windows {
+    // off
+    open-delay-ms 150
+
+    highlight {
+        active-color "#9b22b2"
+        urgent-color "#cc0000"
+        padding 30
+        corner-radius 14
+    }
+
+    binds {
+            Alt+Tab         { next-window     scope="all"; }
+            Alt+Shift+Tab   { previous-window scope="all"; }
+            Alt+grave       { next-window     scope="all" filter="app-id"; }
+            Alt+Shift+grave { previous-window scope="all" filter="app-id"; }
+
+            Mod+Tab         { next-window     scope="output"; }
+            Mod+Shift+Tab   { previous-window scope="output"; }
+            Mod+grave       { next-window     scope="output" filter="app-id"; }
+            Mod+Shift+grave { previous-window scope="output" filter="app-id"; }
+        }
+}
+
 // You can change the path where screenshots are saved.
 // A ~ at the front will be expanded to the home directory.
 // The path is formatted with strftime(3) to give you the screenshot date and time.
@@ -642,9 +667,6 @@ binds {
     // Alternatively, there are commands to move just a single window:
     // Mod+Ctrl+1 { move-window-to-workspace 1; }
 
-    // Switches focus between the current and the previous workspace.
-    Mod+Tab { focus-workspace-previous; }
-    Alt+Tab { focus-window-previous; }
     // Open/close the Overview: a zoomed-out view of workspaces and windows.
     // You can also move the mouse into the top-left hot corner,
     // or do a four-finger swipe up on a touchpad.
