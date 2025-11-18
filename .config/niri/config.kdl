@@ -261,6 +261,8 @@ spawn-at-startup "swayidle" "-w" "timeout" "890" "niri msg action power-off-moni
 // If there is no external keyboard attached (which is preconfigured with Colemax),
 // set the primary keyboard layout to Colemax
 spawn-at-startup "nirikeebset"
+// Start Gnome polkit agent for any UI applications requiring privilege escalation
+spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 
 environment {
     // To launch apps based on electron ( > v28)
