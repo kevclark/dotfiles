@@ -6,7 +6,8 @@ local config = wezterm.config_builder()
 
 config = {
   font_size = fontsettings.size,
-  color_scheme = 'Dark+',
+  color_scheme = 'Noctalia',
+  -- color_scheme = 'Dark+',
   -- color_scheme = 'Dracula',
   -- color_scheme = 'Bright Lights',
   -- workaround Hyprland bug in < 0.41
