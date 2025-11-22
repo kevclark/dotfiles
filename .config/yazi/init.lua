@@ -1,9 +1,11 @@
 -- ~/.config/yazi/init.lua
 require("bookmarks"):setup({
-	last_directory = { enable = false, persist = false },
+	last_directory = { enable = false, persist = false, mode="dir" },
 	persist = "all",
 	desc_format = "full",
 	file_pick_mode = "hover",
+  custom_disc_input = true,
+  show_keys = true,
 	notify = {
 		enable = true,
 		timeout = 2,

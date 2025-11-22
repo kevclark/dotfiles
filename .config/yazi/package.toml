@@ -1,17 +1,17 @@
 [[plugin.deps]]
 use = "Reledia/glow"
-rev = "5ce76dc"
-hash = "52e5f5c602962e7cbf874da28f52ba45"
+rev = "bd3eaa5"
+hash = "92b5c58159a51c567f82b618cee2b78"
 
 [[plugin.deps]]
 use = "dedukun/bookmarks"
-rev = "202e450"
-hash = "9e2f6f7381542d3adb3080b394b431b4"
+rev = "9ef1254"
+hash = "92fbb5483657fa7976cdf4e0104e18e0"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:mount"
-rev = "beb586a"
-hash = "5c4d8080367dd2561a18c1cf5a1dd295"
+rev = "2301ff8"
+hash = "4fccaaf10c36dc2466e2438a386ff017"
 
 [flavor]
 deps = []
