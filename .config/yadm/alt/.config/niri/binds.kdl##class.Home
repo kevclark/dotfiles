@@ -3,4 +3,5 @@ binds {
     Mod+C hotkey-overlay-title="Clipboard" { spawn-sh "qs -c noctalia-shell ipc call launcher clipboard"; }
     Mod+XF86AudioMute hotkey-overlay-title="Set random wallpaper" { spawn-sh "qs -c noctalia-shell ipc call wallpaper random"; }
     Mod+X { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
+    Mod+Shift+W hotkey-overlay-title="Set random wallpaper" { spawn-sh "qs -c noctalia-shell ipc call wallpaper random"; }
 }
