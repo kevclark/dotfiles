@@ -66,6 +66,8 @@ include "primary-output.kdl"
 
 cursor {
     hide-when-typing
+    xcursor-theme "Layan-border-cursors"
+    xcursor-size 24
 }
 // Settings that influence how windows are positioned and sized.
 // Find more information on the wiki:
@@ -240,6 +242,15 @@ layout {
 // Overview feature not yet in a release
 overview {
     zoom 0.5
+}
+
+// Blu from wip/branch PR #3483
+blur {
+    // off
+    passes 3
+    offset 1.5
+    noise 0.02
+    saturation 1.5
 }
 
 // Add lines like this to spawn processes at startup.
@@ -418,6 +429,10 @@ window-rule {
     match is-active=false
 
     opacity 0.65
+
+    background-effect {
+        blur true
+    }
 }
 
 window-rule {
