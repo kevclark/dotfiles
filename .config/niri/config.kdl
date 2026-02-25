@@ -248,7 +248,7 @@ overview {
 blur {
     // off
     passes 3
-    offset 1.5
+    offset 2
     noise 0.02
     saturation 1.5
 }
@@ -423,6 +423,16 @@ window-rule {
     clip-to-geometry true
 }
 
+
+window-rule {
+    match app-id="org.wezfurlong.wezterm"
+
+    opacity 0.9
+
+    background-effect {
+        blur true
+    }
+}
 
 // Make inactive windows semitransparent.
 window-rule {
