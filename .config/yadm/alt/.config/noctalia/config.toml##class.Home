@@ -172,7 +172,7 @@ telemetry_enabled = false
     [shell.panel]
     clipboard_placement = "attached"
     launcher_position = "top_center"
-    session_placement = "centered"
+    session_placement = "attached"
     transparency_mode = "soft"
 
     [[shell.session.actions]]
@@ -218,7 +218,6 @@ directory = "/home/kev/Pictures/wallpapers/wallpapers/Pictures"
 
     [wallpaper.automation]
     enabled = true
-    interval_minutes = 1
     interval_seconds = 300
 
     [wallpaper.default]
