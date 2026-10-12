@@ -118,4 +118,5 @@ wezterm.on("update-right-status", function(window, _)
     })
 end)
 
+config.color_scheme = "Noctalia"
 return config

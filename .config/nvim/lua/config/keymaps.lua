@@ -83,7 +83,8 @@ keymap("n", "yp", ":let @+=expand('%:p')<CR>", { desc = "Current buffer file pat
 -- Centre screen when jumping and searching for next match
 keymap("n", "J", "mzJ`z")
 keymap("n", "<C-d>", "<C-d>zz")
-keymap("n", "<C-u>", "<C-u>zz")
+keymap("n", "<C-d>", "<C-d>zz")
+
 keymap("n", "n", "nzzzv")
 keymap("n", "N", "Nzzzv")
 

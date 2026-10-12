@@ -1,4 +1,9 @@
+// layer-rule {
+//     match namespace="^noctalia-overview*"
+//     place-within-backdrop true
+// }
+
 layer-rule {
-    match namespace="^noctalia-overview*"
+    match namespace="^noctalia-backdrop"
     place-within-backdrop true
 }

@@ -31,3 +31,6 @@ set background=dark
 " Fix-up for lightline display on single vim window
 set laststatus=2
 set updatetime=200
+
+nmap <C-d> <C-d>zz
+nmap <C-u> <C-u>zz

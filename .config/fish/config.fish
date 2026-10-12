@@ -4,6 +4,7 @@ set -gx EDITOR nvim
 set -gx VISUAL nvim
 set -gx SUDO_EDITOR (which nvim)
 fish_add_path $HOME/bin
+fish_add_path $HOME/.local/bin
 # ignore grc wrapper for ls and use our own override functin for ls
 set -U grc_plugin_ignore_execs ls
 

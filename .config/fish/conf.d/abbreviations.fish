@@ -11,6 +11,7 @@ abbr dtrhh 'dt reset --hard'
 abbr dtpsh 'dt push'
 abbr dtpll 'dt pull'
 abbr gsha 'git rev-parse HEAD'
+abbr nvim-ks 'NVIM_APPNAME=kickstart.nvim nvim'
 
 # Get the Linux distribution family ID
 set dist_family_id (grep '^ID_LIKE=' /etc/os-release | cut -d '=' -f 2-)

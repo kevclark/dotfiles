@@ -9,8 +9,8 @@
 input {
     keyboard {
         xkb {
-            layout "gb"
-            // layout "gb(cmk_ed_ks)"; model "pc105awide"; options "misc:extend,lv5:caps_switch_lock,grp:shifts_toggle,compose:menu,misc:cmk_curl_dh";
+            // layout "gb";
+            layout "gb(cmk_ed_ks)"; model "pc105awide"; options "misc:extend,lv5:caps_switch_lock,grp:shifts_toggle,compose:menu,misc:cmk_curl_dh";
         }
     }
 
@@ -66,7 +66,7 @@ include "primary-output.kdl"
 
 cursor {
     hide-when-typing
-    xcursor-theme "Layan-border-cursors"
+    xcursor-theme "Bibata-Modern-Ice"
     xcursor-size 24
 }
 // Settings that influence how windows are positioned and sized.
@@ -258,16 +258,6 @@ blur {
 // which may be more convenient to use.
 // See the binds section below for more spawn examples.
 include "spawn-at-startup.kdl"
-// Lock session after 15min of no activity
-// Blank screen 10s before this as an early warning session is about to lock
-// If locker is running and no password is entered within 10s, blank screen
-// The lock event will subscribe to the "loginctl lock-session"
-// The before-sleep event will ensure the locker is run before suspending
-spawn-at-startup "swayidle" "-w" "timeout" "890" "niri msg action power-off-monitors" \
-                    "timeout" "900" "locker.sh" \
-                    "timeout" "10" "if pgrep -x gtklock; then niri msg action power-off-monitors; fi" \
-                    "lock" "locker.sh" \
-                    "before-sleep" "locker.sh";
 
 // If there is no external keyboard attached (which is preconfigured with Colemax),
 // set the primary keyboard layout to Colemax
@@ -427,7 +417,7 @@ window-rule {
 window-rule {
     match app-id="org.wezfurlong.wezterm"
 
-    opacity 0.9
+    opacity 0.8
 
     background-effect {
         blur true
@@ -438,7 +428,7 @@ window-rule {
 window-rule {
     match is-active=false
 
-    opacity 0.65
+    opacity 0.5
 
     background-effect {
         blur true
@@ -469,6 +459,13 @@ window-rule {
 }
 
 window-rule {
+    match app-id="org.gnome.Calculator" title="^Calculator"
+    open-floating true
+    default-column-width { fixed 707; }
+    default-window-height { fixed 703; }
+}
+
+window-rule {
     match app-id="thunar" title="^File Operation"
 
     open-floating true
@@ -493,7 +490,7 @@ window-rule {
 }
 
 window-rule {
-    match app-id="Proton Mail"
+    match app-id="proton-mail"
     open-maximized true
 }
 
@@ -537,7 +534,7 @@ binds {
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return { spawn "wezterm"; }
     Mod+E { spawn "thunar"; }
-    Ctrl+Alt+L { spawn "gtklock"; }
+    Ctrl+Alt+L { spawn-sh "loginctl lock-session"; }
     Mod+B { spawn "zen-browser"; }
     Mod+F12 { spawn "togglenirikeymap"; }
 
