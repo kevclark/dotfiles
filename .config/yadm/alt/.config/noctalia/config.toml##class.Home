@@ -1,0 +1,262 @@
+config_version = 14
+
+[backdrop]
+enabled = true
+
+[bar.default]
+background_opacity = 0.64999998547136784
+capsule = true
+center = [ "workspaces" ]
+end = [ "tray", "group:g1", "group:g2", "nightlight", "battery", "clock", "widget", "notifications", "session" ]
+margin_ends = 200
+padding = 6
+start = [
+    "launcher",
+    "clipboard",
+    "wallpaper",
+    "sysmon",
+    "Picker",
+    "keyboard_layout",
+    "control-center",
+    "pill",
+    "active_window"
+]
+
+    [[bar.default.capsule_group]]
+    accordion = false
+    accordion_direction = "end"
+    enabled = true
+    fill = "surface_variant"
+    id = "g1"
+    members = [ "network", "bluetooth" ]
+    opacity = 1.0
+    padding = 6.0
+
+    [[bar.default.capsule_group]]
+    accordion = false
+    accordion_direction = "end"
+    enabled = true
+    fill = "surface_variant"
+    id = "g2"
+    members = [ "brightness", "volume" ]
+    opacity = 1.0
+    padding = 6.0
+
+[idle]
+behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
+
+    [idle.behavior.lock]
+    action = "lock"
+    enabled = true
+    timeout = 605.0
+
+    [idle.behavior.lock-and-suspend]
+    action = "lock_and_suspend"
+    enabled = false
+    timeout = 900.0
+
+    [idle.behavior.screen-off]
+    action = "screen_off"
+    enabled = true
+    locked_timeout = 5.0
+    timeout = 600.0
+
+[location]
+auto_locate = true
+sunrise = "05:00"
+sunset = "21:00"
+
+[lockscreen]
+blurred_desktop = true
+
+[lockscreen_widgets]
+enabled = true
+schema_version = 1
+widget_order = [
+    "lockscreen-login-box@eDP-1",
+    "lockscreen-widget-0000000000000001",
+    "lockscreen-widget-0000000000000002",
+    "lockscreen-widget-0000000000000003"
+]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
+    box_height = 196.0
+    box_width = 720.0
+    cx = 960.0
+    cy = 961.0
+    output = "eDP-1"
+    placement_height = 1080.0
+    placement_width = 1920.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000001]
+    box_height = 0.0
+    box_width = 0.0
+    cx = 1709.8203125
+    cy = 142.62890625
+    output = "eDP-1"
+    placement_height = 1080.0
+    placement_width = 1920.0
+    rotation = 0.0
+    type = "clock"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000001.settings]
+        format = "{:%H:%M:%S}"
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000002]
+    box_height = 0.0
+    box_width = 0.0
+    cx = 1703.3297119140625
+    cy = 907.2823486328125
+    output = "eDP-1"
+    placement_height = 1080.0
+    placement_width = 1920.0
+    rotation = 0.0
+    type = "sysmon"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000002.settings]
+        background = true
+        background_opacity = 0.60999999999999999
+        stat2 = "ram_pct"
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000003]
+    box_height = 0.0
+    box_width = 0.0
+    cx = 193.87300109863281
+    cy = 154.87811279296875
+    output = "eDP-1"
+    placement_height = 1080.0
+    placement_width = 1920.0
+    rotation = 0.0
+    type = "weather"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000003.settings]
+        background_opacity = 0.57000000000000006
+
+[nightlight]
+enabled = true
+
+[plugin_settings."yuuto/arch-updater"]
+auto_check_hours = 1
+
+[plugins]
+enabled = [ "yuuto/arch-updater", "jrohland/claudecode" ]
+
+[shell]
+font_family = "JetBrainsMono Nerd Font"
+settings_window_translucent = true
+telemetry_enabled = false
+
+    [shell.panel]
+    clipboard_placement = "attached"
+    launcher_position = "top_center"
+    session_placement = "centered"
+    transparency_mode = "soft"
+
+    [[shell.session.actions]]
+    action = "lock"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "l"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "logout"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "x"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "lock_and_suspend"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "z"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "reboot"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "r"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "shutdown"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "s"
+    variant = "destructive"
+
+[theme]
+builtin = "Catppuccin"
+
+[wallpaper]
+directory = "/home/kev/Pictures/wallpapers/wallpapers/Pictures"
+
+    [wallpaper.automation]
+    enabled = true
+    interval_minutes = 1
+    interval_seconds = 300
+
+    [wallpaper.default]
+    path = "/home/kev/Pictures/wallpapers/wallpapers/Pictures/93.jpg"
+
+    [wallpaper.last]
+    path = "/home/kev/Pictures/wallpapers/wallpapers/Pictures/93.jpg"
+
+    [wallpaper.monitors.eDP-1]
+    path = "/home/kev/Pictures/wallpapers/wallpapers/Pictures/93.jpg"
+
+    [[wallpaper.favorite]]
+    path = "/home/kev/Pictures/wallpapers/wallpapers/Pictures/9.jpg"
+    theme_mode = "auto"
+
+[widget.Picker]
+glyph = "color-picker"
+tooltip = "Hyprpicker"
+type = "custom_button"
+
+    [widget.Picker.actions]
+    left = "exec hyprpicker -a"
+
+[widget.clock]
+format = "{:%H:%M %a, %b %d}"
+
+[widget.keyboard_layout]
+show_label = false
+
+[widget.launcher]
+glyph = "apps-filled"
+
+[widget.network]
+show_label = false
+
+[widget.pill]
+type = "jrohland/claudecode:pill"
+
+[widget.widget]
+hide_on_empty = true
+type = "yuuto/arch-updater:widget"
