@@ -18,7 +18,6 @@ start = [
     "Picker",
     "keyboard_layout",
     "control-center",
-    "pill",
     "active_window"
 ]
 
@@ -71,12 +70,13 @@ blurred_desktop = true
 
 [lockscreen_widgets]
 enabled = true
-schema_version = 1
+schema_version = 2
 widget_order = [
     "lockscreen-login-box@eDP-1",
     "lockscreen-widget-0000000000000001",
     "lockscreen-widget-0000000000000002",
-    "lockscreen-widget-0000000000000003"
+    "lockscreen-widget-0000000000000003",
+    "lockscreen-widget-0000000000000004"
 ]
 
     [lockscreen_widgets.grid]
@@ -86,9 +86,9 @@ widget_order = [
 
     [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
     box_height = 196.0
-    box_width = 720.0
+    box_width = 810.0
     cx = 960.0
-    cy = 961.0
+    cy = 898.75
     output = "eDP-1"
     placement_height = 1080.0
     placement_width = 1920.0
@@ -107,15 +107,16 @@ widget_order = [
         show_keyboard_layout = true
         show_login_button = true
         show_media = true
+        show_password_reveal = true
         show_session_buttons = true
         show_unlock_hint = true
         show_weather = true
 
     [lockscreen_widgets.widget.lockscreen-widget-0000000000000001]
-    box_height = 0.0
-    box_width = 0.0
-    cx = 1709.8203125
-    cy = 142.62890625
+    box_height = 144.0
+    box_width = 352.0
+    cx = 960.0
+    cy = 540.0
     output = "eDP-1"
     placement_height = 1080.0
     placement_width = 1920.0
@@ -123,37 +124,58 @@ widget_order = [
     type = "clock"
 
         [lockscreen_widgets.widget.lockscreen-widget-0000000000000001.settings]
+        clock_style = "digital"
         format = "{:%H:%M:%S}"
 
     [lockscreen_widgets.widget.lockscreen-widget-0000000000000002]
-    box_height = 0.0
-    box_width = 0.0
-    cx = 1703.3297119140625
-    cy = 907.2823486328125
-    output = "eDP-1"
-    placement_height = 1080.0
-    placement_width = 1920.0
-    rotation = 0.0
-    type = "sysmon"
-
-        [lockscreen_widgets.widget.lockscreen-widget-0000000000000002.settings]
-        background = true
-        background_opacity = 0.60999999999999999
-        stat2 = "ram_pct"
-
-    [lockscreen_widgets.widget.lockscreen-widget-0000000000000003]
-    box_height = 0.0
-    box_width = 0.0
-    cx = 193.87300109863281
-    cy = 154.87811279296875
+    box_height = 183.26171875
+    box_width = 223.82421875
+    cx = 1758.767578125
+    cy = 119.798828125
     output = "eDP-1"
     placement_height = 1080.0
     placement_width = 1920.0
     rotation = 0.0
     type = "weather"
 
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000002.settings]
+        background = true
+        background_opacity = 0.60999999999999999
+        show_forecast = true
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000003]
+    box_height = 0.0
+    box_width = 0.0
+    cx = 177.51953125
+    cy = 74.60546875
+    output = "eDP-1"
+    placement_height = 1080.0
+    placement_width = 1920.0
+    rotation = 0.0
+    type = "3ri4ng0ld/ip-monitor:desktop"
+
         [lockscreen_widgets.widget.lockscreen-widget-0000000000000003.settings]
         background_opacity = 0.57000000000000006
+        mode = "custom_command"
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000004]
+    box_height = 0.0
+    box_width = 0.0
+    cx = 960.0
+    cy = 44.0
+    output = "eDP-1"
+    placement_height = 1080.0
+    placement_width = 1920.0
+    rotation = 0.0
+    type = "yocraft/battery-widget:widget"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000004.settings]
+        background = true
+        hide_plugged = true
+        label_content = "percent"
+        layout = "horizontal"
+        show_glyph = true
+        show_label = true
 
 [nightlight]
 enabled = true
@@ -162,7 +184,7 @@ enabled = true
 auto_check_hours = 1
 
 [plugins]
-enabled = [ "yuuto/arch-updater", "jrohland/claudecode" ]
+enabled = [ "yuuto/arch-updater", "3ri4ng0ld/ip-monitor", "yocraft/battery-widget" ]
 
 [shell]
 font_family = "JetBrainsMono Nerd Font"
@@ -182,11 +204,26 @@ telemetry_enabled = false
     shortcut = "l"
     variant = "default"
 
+    # Log out, Reboot and Shut down are "lock" rows so the lock screen hides them;
+    # each command runs the matching built-in action via IPC.
     [[shell.session.actions]]
-    action = "logout"
+    action = "lock"
+    label = "Log out"
+    glyph = "logout"
+    command = "noctalia msg session logout"
     countdown_seconds = 0.0
     enabled = true
     shortcut = "x"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "command"
+    label = "Switch user"
+    glyph = "users"
+    command = "noctalia msg session lock && sleep 2 && busctl --system call org.gnome.DisplayManager /org/gnome/DisplayManager/LocalDisplayFactory org.gnome.DisplayManager.LocalDisplayFactory CreateTransientDisplay"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "u"
     variant = "default"
 
     [[shell.session.actions]]
@@ -197,14 +234,20 @@ telemetry_enabled = false
     variant = "default"
 
     [[shell.session.actions]]
-    action = "reboot"
+    action = "lock"
+    label = "Reboot"
+    glyph = "reboot"
+    command = "noctalia msg session reboot"
     countdown_seconds = 0.0
     enabled = true
     shortcut = "r"
     variant = "default"
 
     [[shell.session.actions]]
-    action = "shutdown"
+    action = "lock"
+    label = "Shut Down"
+    glyph = "shutdown"
+    command = "noctalia msg session shutdown"
     countdown_seconds = 0.0
     enabled = true
     shortcut = "s"
@@ -252,9 +295,6 @@ glyph = "apps-filled"
 
 [widget.network]
 show_label = false
-
-[widget.pill]
-type = "jrohland/claudecode:pill"
 
 [widget.widget]
 hide_on_empty = true
